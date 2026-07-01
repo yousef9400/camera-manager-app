@@ -152,14 +152,19 @@ tr:hover td{background:#f8fafc}
 <div id="tab-dashboard" class="tab-content active">
 <div class="stats-grid" id="statsGrid"></div>
 <div class="card">
-<h3>النسبة المئوية</h3>
-<div style="display:flex;align-items:center;justify-content:center;padding:20px 0">
-<div class="donut-container" style="width:220px;height:220px">
-<canvas id="donutCanvas" width="220" height="220"></canvas>
+<div style="display:flex;align-items:center;justify-content:center;gap:24px;padding:16px 0;flex-wrap:wrap">
+<div style="text-align:center">
+<div style="font-size:14px;font-weight:700;color:var(--text-secondary);margin-bottom:8px">نسبة التشغيل</div>
+<div class="donut-container" style="width:140px;height:140px">
+<canvas id="donutCanvas" width="140" height="140"></canvas>
 <div class="donut-center">
-<div class="pct" id="donutPct" style="font-size:36px">0%</div>
-<div class="lbl">من العدد الكلي</div>
+<div class="pct" id="donutPct" style="font-size:24px">0%</div>
 </div>
+</div>
+</div>
+<div style="flex:1;min-width:250px;max-width:400px">
+<div style="font-size:14px;font-weight:700;color:var(--text-secondary);margin-bottom:8px">الأعمال الجارية</div>
+<div id="dashboardWorks" style="max-height:160px;overflow:auto"></div>
 </div>
 </div>
 </div>
@@ -617,7 +622,7 @@ renderAll();
 }
 
 function renderAll(){
-renderStats();renderTypes();renderLogs();renderLocations();renderAccessories();renderWorks();renderUsers();renderCameras();
+renderStats();renderTypes();renderLogs();renderLocations();renderAccessories();renderWorks();renderUsers();renderCameras();renderDashboardWorks();
 }
 
 function renderStats(){
@@ -682,9 +687,11 @@ document.getElementById('accessoriesList').innerHTML=accessories.map(a=>
 async function deleteAccessory(key){if(!confirm('حذف الجهاز؟'))return;await dbDel('accessories/'+key);loadAll();toast('تم حذف الجهاز')}
 
 function renderWorks(){
-document.getElementById('workTable').innerHTML=works.map(w=>
-'<tr><td>'+(w.work_date||'')+'</td><td>'+(w.description||'')+'</td><td>'+(w.work_type||'')+'</td><td>'+(w.location||'')+'</td><td>'+(w.quantity||1)+'</td><td>'+(w.completed?'✓':'⏳')+'</td><td>'+(!w.completed?'<button class="btn btn-primary" style="padding:4px 8px;font-size:11px" onclick="completeWork(\''+w._key+'\')">إتمام</button>':'')+(curRole==='admin'?'<button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-right:4px" onclick="deleteWork(\''+w._key+'\')">حذف</button>':'')+'</td></tr>'
-).join('');
+document.getElementById('workTable').innerHTML=works.map(w=>{
+const isDone=w.completed;
+const statusBtn=isDone?'<span style="display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;background:#d1fae5;color:#065f46;cursor:pointer" onclick="toggleWork(\''+w._key+'\',false)">✓ مكتملة</span>':'<span style="display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;background:#fef3c7;color:#92400e;cursor:pointer" onclick="toggleWork(\''+w._key+'\',true)">⏳ تحت الإجراء</span>';
+return '<tr'+(isDone?' style="opacity:.6"':'')+'><td>'+(w.work_date||'')+'</td><td style="'+(isDone?'text-decoration:line-through':'')+'">'+(w.description||'')+'</td><td>'+(w.work_type||'')+'</td><td>'+(w.location||'')+'</td><td>'+(w.quantity||1)+'</td><td>'+statusBtn+'</td><td>'+(curRole==='admin'?'<button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-right:4px" onclick="deleteWork(\''+w._key+'\')">حذف</button>':'')+'</td></tr>';
+}).join('');
 }
 
 function renderUsers(){
@@ -701,10 +708,22 @@ return '<tr><td'+(nameStyle?' style="'+nameStyle+'"':'')+'>'+(isYousef?'⭐ ':''
 function drawDonut(pct){
 const c=document.getElementById('donutCanvas');
 const ctx=c.getContext('2d');
-const cx=110,cy=110,r=85,lw=24;
-ctx.clearRect(0,0,220,220);
+const cx=70,cy=70,r=55,lw=16;
+ctx.clearRect(0,0,140,140);
 ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.strokeStyle='#e5e7eb';ctx.lineWidth=lw;ctx.stroke();
 ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+(pct/100)*Math.PI*2);ctx.strokeStyle='#2563eb';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
+}
+
+function renderDashboardWorks(){
+const el=document.getElementById('dashboardWorks');
+if(!works.length){el.innerHTML='<div style="text-align:center;padding:16px;color:var(--text-secondary);font-size:13px">لا توجد أعمال جارية</div>';return}
+el.innerHTML=works.map(w=>{
+const icon=w.completed?'✓':'⏳';
+const color=w.completed?'#059669':'#d97706';
+const bg=w.completed?'#d1fae5':'#fef3c7';
+const textDecoration=w.completed?'text-decoration:line-through;opacity:.6':'';
+return '<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-bottom:1px solid var(--border);'+textDecoration+'"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:'+bg+';color:'+color+';font-size:11px;font-weight:700;flex-shrink:0">'+icon+'</span><span style="font-size:13px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(w.description||'بدون وصف')+'</span><span style="font-size:11px;color:var(--text-secondary);flex-shrink:0">'+(w.location||'')+'</span></div>';
+}).join('');
 }
 
 document.querySelectorAll('.tab').forEach(tab=>{
@@ -789,7 +808,7 @@ document.getElementById('camName').value='';
 document.getElementById('camMAC').value='';
 document.getElementById('camType').value='bullet';
 document.getElementById('camStatus').value='warehouse';
-document.getElementById('camLocation').innerHTML=locations.map(l=>'<option value="'+l.name+'">'+l.name+'</option>').join('');
+document.getElementById('camLocation').innerHTML='<option value="">-- اختر الموقع --</option>'+locations.map(l=>'<option value="'+l.name+'">'+l.name+'</option>').join('');
 document.getElementById('addCameraModal').classList.add('active');
 }
 
@@ -800,6 +819,8 @@ const type=document.getElementById('camType').value;
 const loc=document.getElementById('camLocation').value;
 const status=document.getElementById('camStatus').value;
 if(!name){toast('أدخل اسم الكاميرا','error');return}
+if(!mac){toast('أدخل MAC Address','error');return}
+if(!loc){toast('اختر الموقع','error');return}
 const now=new Date();
 await dbPush('cameras',{name:name,mac:mac,type:type,location:loc,status:status,date:now.toLocaleDateString('en-GB'),username:curUser});
 if(status==='warehouse'){let s={...state};s.warehouse=(s.warehouse||0)+1;s.total=(s.total||0)+1;if(s[type]!==undefined)s[type]=(s[type]||0)+1;await dbSet('system_state',s);state=s;}
@@ -964,7 +985,7 @@ const now=new Date();
 await dbPush('works',{description:desc,work_type:type,location:loc,quantity:qty,completed:false,username:curUser,work_date:now.toLocaleDateString('en-GB'),work_time:now.toLocaleTimeString('en-GB')});
 closeModal('workModal');loadAll();toast('تم إضافة العمل');
 }
-async function completeWork(key){const w=await dbGet('works/'+key);w.completed=true;await dbSet('works/'+key,w);loadAll();toast('تم الإتمام')}
+async function toggleWork(key,completed){const w=await dbGet('works/'+key);w.completed=completed;await dbSet('works/'+key,w);loadAll();toast(completed?'تم الإتمام':'تم فتح العمل')}
 async function deleteWork(key){if(!confirm('حذف العمل؟'))return;await dbDel('works/'+key);loadAll()}
 async function updateUser(key,value,field){const u=await dbGet('users/'+key);if(u.username==='yousef'){toast('لا يمكن تعديل الأدمن الرئيسي','error');return}u[field]=value;await dbSet('users/'+key,u);loadAll();toast('تم التحديث')}
 async function deleteUser(key){
@@ -1014,34 +1035,42 @@ reportData=[];
 let title='';
 let heads='';
 
+function inRange(dateStr,start,end){
+if(!dateStr)return false;
+const parts=dateStr.split('/');
+const ld=new Date(parseInt(parts[2]),parseInt(parts[1])-1,parseInt(parts[0]));
+return ld>=start&&ld<=end;
+}
+function inMonth(dateStr,month,year){
+if(!dateStr)return false;
+const parts=dateStr.split('/');
+return parseInt(parts[1])===month&&parseInt(parts[2])===year;
+}
+
+heads='<th>التاريخ</th><th>النوع</th><th>العملية</th><th>الكمية</th><th>الموقع</th><th>المستخدم</th><th>الوقت</th>';
+
 if(type==='daily'){
-title='التقرير اليومي — '+dateVal;
-heads='<th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th><th>الوقت</th>';
+title='التقرير الشامل اليومي — '+dateVal;
 const dateStr=d.toLocaleDateString('en-GB');
-logs.forEach(l=>{if(l.op_date===dateStr)reportData.push([l.operation||'',l.quantity||0,l.ip||'',l.location||'',l.op_time||''])});
+logs.forEach(l=>{if(l.op_date===dateStr)reportData.push([l.op_date||'','عمليات',l.operation||'',l.quantity||0,l.location||'',l.username||'',l.op_time||''])});
+works.forEach(w=>{if(w.work_date===dateStr)reportData.push([w.work_date||'','أعمال',w.description||'',w.quantity||1,w.location||'',w.username||'',w.work_time||''])});
+cameras.forEach(c=>{if(c.date===dateStr)reportData.push([c.date||'','كاميرا',c.name||' — '+c.status,'1',c.location||'',c.username||'',''])});
 }
 else if(type==='weekly'){
 const start=new Date(d);start.setDate(start.getDate()-6);
 const end=new Date(d);
-title='التقرير الأسبوعي — '+start.toLocaleDateString('en-GB')+' إلى '+end.toLocaleDateString('en-GB');
-heads='<th>التاريخ</th><th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th>';
-logs.forEach(l=>{
-if(!l.op_date)return;
-const parts=l.op_date.split('/');
-const ld=new Date(parseInt(parts[2]),parseInt(parts[1])-1,parseInt(parts[0]));
-if(ld>=start&&ld<=end)reportData.push([l.op_date,l.operation||'',l.quantity||0,l.ip||'',l.location||'']);
-});
+title='التقرير الشامل الأسبوعي — '+start.toLocaleDateString('en-GB')+' إلى '+end.toLocaleDateString('en-GB');
+logs.forEach(l=>{if(inRange(l.op_date,start,end))reportData.push([l.op_date||'','عمليات',l.operation||'',l.quantity||0,l.location||'',l.username||'',l.op_time||''])});
+works.forEach(w=>{if(inRange(w.work_date,start,end))reportData.push([w.work_date||'','أعمال',w.description||'',w.quantity||1,w.location||'',w.username||'',w.work_time||''])});
+cameras.forEach(c=>{if(inRange(c.date,start,end))reportData.push([c.date||'','كاميرا',c.name||' — '+c.status,'1',c.location||'',c.username||'',''])});
 }
 else if(type==='monthly'){
 const month=d.getMonth()+1;
 const year=d.getFullYear();
-title='التقرير الشهري — '+year+'/'+String(month).padStart(2,'0');
-heads='<th>التاريخ</th><th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th>';
-logs.forEach(l=>{
-if(!l.op_date)return;
-const parts=l.op_date.split('/');
-if(parseInt(parts[1])===month&&parseInt(parts[2])===year)reportData.push([l.op_date,l.operation||'',l.quantity||0,l.ip||'',l.location||'']);
-});
+title='التقرير الشامل الشهري — '+year+'/'+String(month).padStart(2,'0');
+logs.forEach(l=>{if(inMonth(l.op_date,month,year))reportData.push([l.op_date||'','عمليات',l.operation||'',l.quantity||0,l.location||'',l.username||'',l.op_time||''])});
+works.forEach(w=>{if(inMonth(w.work_date,month,year))reportData.push([w.work_date||'','أعمال',w.description||'',w.quantity||1,w.location||'',w.username||'',w.work_time||''])});
+cameras.forEach(c=>{if(inMonth(c.date,month,year))reportData.push([c.date||'','كاميرا',c.name||' — '+c.status,'1',c.location||'',c.username||'',''])});
 }
 
 document.getElementById('reportTitle').textContent=title;
