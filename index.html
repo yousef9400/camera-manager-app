@@ -169,12 +169,13 @@ tr:hover td{background:#f8fafc}
 <div class="card">
 <h3>قائمة الكاميرات</h3>
 <input type="text" class="search-box" id="cameraSearch" placeholder="بحث بالاسم أو MAC أو الموقع..." oninput="renderCameras()">
-<div style="display:flex;gap:8px;margin-bottom:12px">
+<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
 <button class="btn btn-primary" onclick="openAddCameraModal()" style="flex:0 auto;padding:8px 16px">+ كاميرا جديدة</button>
+<button class="btn btn-danger" id="bulkDeleteBtn" onclick="bulkDeleteCameras()" style="flex:0 auto;padding:8px 16px;display:none">🗑 حذف المحدد</button>
 <span id="cameraCount" style="font-size:13px;color:var(--text-secondary);display:flex;align-items:center"></span>
 </div>
 <div style="max-height:500px;overflow:auto">
-<table><thead><tr><th>#</th><th>الاسم</th><th>MAC Address</th><th>النوع</th><th>الموقع</th><th>الحالة</th><th>التاريخ</th><th></th></tr></thead>
+<table><thead><tr><th style="width:36px"><input type="checkbox" id="selectAllCam" onchange="toggleSelectAll(this)" style="width:16px;height:16px;cursor:pointer"></th><th>#</th><th>الاسم</th><th>MAC Address</th><th>النوع</th><th>الموقع</th><th>الحالة</th><th>التاريخ</th><th></th></tr></thead>
 <tbody id="camerasTable"></tbody></table>
 </div>
 </div>
@@ -653,9 +654,45 @@ const q=(document.getElementById('cameraSearch')?document.getElementById('camera
 let filtered=cameras;
 if(q){filtered=cameras.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.mac||'').toLowerCase().includes(q)||(c.location||'').toLowerCase().includes(q))}
 document.getElementById('cameraCount').textContent='العدد: '+filtered.length+' / '+cameras.length;
+document.getElementById('selectAllCam').checked=false;
+document.getElementById('bulkDeleteBtn').style.display='none';
 document.getElementById('camerasTable').innerHTML=filtered.map((c,i)=>
-'<tr><td>'+(i+1)+'</td><td style="font-weight:700">'+(c.name||'')+'</td><td style="direction:ltr;text-align:left;font-family:monospace;color:var(--primary)">'+(c.mac||'—')+'</td><td>'+(getTypeLabel(c.type))+'</td><td>'+(c.location||'')+'</td><td><span style="background:'+statusColors[c.status]+';color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">'+(statusLabels[c.status]||c.status)+'</span></td><td>'+(c.date||'')+'</td><td>'+(curRole==='admin'?'<button class="btn btn-primary" style="padding:3px 8px;font-size:11px;margin:2px" onclick="editCamera(\''+c._key+'\')">تعديل</button><button class="btn btn-danger" style="padding:3px 8px;font-size:11px;margin:2px" onclick="deleteCamera(\''+c._key+'\')">حذف</button>':'')+'</td></tr>'
+'<tr><td style="width:36px;text-align:center"><input type="checkbox" class="cam-check" data-key="'+c._key+'" onchange="updateBulkBtn()" style="width:16px;height:16px;cursor:pointer"></td><td>'+(i+1)+'</td><td style="font-weight:700">'+(c.name||'')+'</td><td style="direction:ltr;text-align:left;font-family:monospace;color:var(--primary)">'+(c.mac||'—')+'</td><td>'+(getTypeLabel(c.type))+'</td><td>'+(c.location||'')+'</td><td><span style="background:'+statusColors[c.status]+';color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">'+(statusLabels[c.status]||c.status)+'</span></td><td>'+(c.date||'')+'</td><td>'+(curRole==='admin'?'<button class="btn btn-primary" style="padding:3px 8px;font-size:11px;margin:2px" onclick="editCamera(\''+c._key+'\')">تعديل</button><button class="btn btn-danger" style="padding:3px 8px;font-size:11px;margin:2px" onclick="deleteCamera(\''+c._key+'\')">حذف</button>':'')+'</td></tr>'
 ).join('');
+}
+
+function toggleSelectAll(cb){
+document.querySelectorAll('.cam-check').forEach(ch=>{ch.checked=cb.checked});
+updateBulkBtn();
+}
+
+function updateBulkBtn(){
+const checked=document.querySelectorAll('.cam-check:checked');
+const btn=document.getElementById('bulkDeleteBtn');
+if(checked.length>0){btn.style.display='';btn.textContent='🗑 حذف ('+checked.length+')'}else{btn.style.display='none'}
+}
+
+async function bulkDeleteCameras(){
+const checked=document.querySelectorAll('.cam-check:checked');
+if(!checked.length){return}
+if(!confirm('هل أنت متأكد من حذف '+checked.length+' كاميرا؟'))return;
+for(const ch of checked){
+const key=ch.dataset.key;
+await dbDel('cameras/'+key);
+let s={...state};const c=cameras.find(x=>x._key===key);
+if(c){
+s.total=Math.max(0,(s.total||0)-1);
+if(c.status==='warehouse')s.warehouse=Math.max(0,(s.warehouse||0)-1);
+if(c.status==='deployed')s.deployed=Math.max(0,(s.deployed||0)-1);
+if(c.status==='maintenance')s.maintenance=Math.max(0,(s.maintenance||0)-1);
+if(c.status==='out_of_service')s.out_of_service=Math.max(0,(s.out_of_service||0)-1);
+if(c.type&&s[c.type]!==undefined)s[c.type]=Math.max(0,(s[c.type]||0)-1);
+state=s;
+}
+}
+await dbSet('system_state',state);
+loadAll();
+toast('تم حذف '+checked.length+' كاميرا');
 }
 
 function getTypeLabel(type){
