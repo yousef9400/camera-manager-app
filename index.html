@@ -116,8 +116,8 @@ tr:hover td{background:#f8fafc}
 <div class="form-group"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="كلمة المرور" onkeydown="if(event.key==='Enter')doLogin()"></div>
 <button class="btn btn-primary" onclick="doLogin()">دخول</button>
 <div style="margin-top:12px;display:flex;justify-content:space-between;font-size:13px">
-<a href="#" onclick="showForgot()" style="color:var(--primary);text-decoration:none">نسيت كلمة المرور؟</a>
-<a href="#" onclick="showRegister()" style="color:var(--primary);text-decoration:none">حساب جديد</a>
+<span onclick="showForgot()" style="color:var(--primary);cursor:pointer;font-weight:700">نسيت كلمة المرور؟</span>
+<span onclick="showRegister()" style="color:var(--primary);cursor:pointer;font-weight:700">حساب جديد</span>
 </div>
 <div id="loginErr" class="login-error"></div>
 </div>
@@ -500,8 +500,8 @@ document.getElementById('appContainer').classList.remove('view-only');
 document.getElementById('userFloat').style.display='none';
 }
 
-function showRegister(){document.getElementById('registerModal').classList.add('active')}
-function showForgot(){document.getElementById('forgotModal').classList.add('active')}
+function showRegister(){console.log('showRegister called');document.getElementById('registerModal').classList.add('active')}
+function showForgot(){console.log('showForgot called');document.getElementById('forgotModal').classList.add('active')}
 
 async function doRegister(){
 const un=document.getElementById('regUser').value.trim();
