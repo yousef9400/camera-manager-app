@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html dir="rtl" lang="ar">
 <head>
 <meta charset="UTF-8">
@@ -103,7 +103,7 @@ tr:hover td{background:#f8fafc}
 .login-box h1{font-size:24px;font-weight:800;color:var(--primary);margin-bottom:24px}
 .login-box .form-group{text-align:right}
 .login-box .btn{width:100%;margin-top:8px}
-.login-error{color:#dc2626;font-size:13px;margin-top:12px;display:none}
+.login-error{color:#dc2626;font-size:14px;margin-top:12px;display:none;padding:8px 12px;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;font-weight:600}
 .search-box{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:'Tajawal',sans-serif;font-size:14px;margin-bottom:12px}
 </style>
 </head>
@@ -112,12 +112,12 @@ tr:hover td{background:#f8fafc}
 <div id="loginScreen" class="login-wrap">
 <div class="login-box">
 <h1>Camera Manager</h1>
-<div class="form-group"><label>اسم المستخدم</label><input type="text" id="loginUser" placeholder="اسم المستخدم"></div>
-<div class="form-group"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="كلمة المرور" onkeydown="if(event.key==='Enter')doLogin()"></div>
-<button class="btn btn-primary" onclick="doLogin()">دخول</button>
+<div class="form-group"><label>╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à</label><input type="text" id="loginUser" placeholder="╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à"></div>
+<div class="form-group"><label>┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒</label><input type="password" id="loginPass" placeholder="┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒" onkeydown="if(event.key==='Enter')doLogin()"></div>
+<button class="btn btn-primary" onclick="doLogin()">╪»╪«┘ê┘ä</button>
 <div style="margin-top:12px;display:flex;justify-content:space-between;font-size:13px">
-<a href="#" onclick="showForgot()" style="color:var(--primary);text-decoration:none">نسيت كلمة المرور؟</a>
-<a href="#" onclick="showRegister()" style="color:var(--primary);text-decoration:none">حساب جديد</a>
+<span onclick="showForgot()" style="color:var(--primary);cursor:pointer;font-weight:700">┘å╪│┘è╪¬ ┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒╪ƒ</span>
+<span onclick="showRegister()" style="color:var(--primary);cursor:pointer;font-weight:700">╪¡╪│╪º╪¿ ╪¼╪»┘è╪»</span>
 </div>
 <div id="loginErr" class="login-error"></div>
 </div>
@@ -128,57 +128,57 @@ tr:hover td{background:#f8fafc}
 <h1>Camera Manager</h1>
 <div class="topbar-right">
 <span id="userDisplay" style="font-size:16px;font-weight:800;cursor:pointer;background:rgba(255,255,255,.15);padding:6px 14px;border-radius:8px;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.3)';this.style.transform='scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,.15)';this.style.transform='scale(1)'"></span>
-<button class="btn-logout" onclick="doLogout()">خروج</button>
+<button class="btn-logout" onclick="doLogout()">╪«╪▒┘ê╪¼</button>
 </div>
 </div>
 
 <div id="userFloat" style="position:fixed;bottom:20px;left:20px;background:var(--card);border-radius:12px;padding:10px 16px;box-shadow:0 4px 16px rgba(0,0,0,.15);display:none;align-items:center;gap:10px;z-index:99;cursor:pointer;transition:all .3s ease;opacity:1;border:2px solid var(--border)" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-<span id="floatWave" style="font-size:22px;display:inline-block;animation:wave 1.5s infinite">👋</span>
+<span id="floatWave" style="font-size:22px;display:inline-block;animation:wave 1.5s infinite">≡ƒæï</span>
 <span id="floatName" style="font-weight:700;font-size:14px;color:var(--text)"></span>
 </div>
 
 <div class="container" id="appContainer">
 <div class="tabs">
-<button class="tab active" data-tab="dashboard">الرئيسية</button>
-<button class="tab" data-tab="cameras">الكاميرات</button>
-<button class="tab" data-tab="actions">الإجراءات</button>
-<button class="tab" data-tab="logs">سجل العمليات</button>
-<button class="tab" data-tab="reports">التقارير</button>
-<button class="tab" data-tab="inventory">المواقع</button>
-<button class="tab" data-tab="tasks">الأعمال الجارية</button>
-<button class="tab" data-tab="users" id="tabUsers" style="display:none">المستخدمين</button>
+<button class="tab active" data-tab="dashboard">╪º┘ä╪▒╪ª┘è╪│┘è╪⌐</button>
+<button class="tab" data-tab="cameras">╪º┘ä┘â╪º┘à┘è╪▒╪º╪¬</button>
+<button class="tab" data-tab="actions">╪º┘ä╪Ñ╪¼╪▒╪º╪í╪º╪¬</button>
+<button class="tab" data-tab="logs">╪│╪¼┘ä ╪º┘ä╪╣┘à┘ä┘è╪º╪¬</button>
+<button class="tab" data-tab="reports">╪º┘ä╪¬┘é╪º╪▒┘è╪▒</button>
+<button class="tab" data-tab="inventory">╪º┘ä┘à┘ê╪º┘é╪╣</button>
+<button class="tab" data-tab="tasks">╪º┘ä╪ú╪╣┘à╪º┘ä ╪º┘ä╪¼╪º╪▒┘è╪⌐</button>
+<button class="tab" data-tab="users" id="tabUsers" style="display:none">╪º┘ä┘à╪│╪¬╪«╪»┘à┘è┘å</button>
 </div>
 
 <div id="tab-dashboard" class="tab-content active">
 <div class="stats-grid" id="statsGrid"></div>
 <div class="card">
-<h3>النسبة المئوية</h3>
+<h3>╪º┘ä┘å╪│╪¿╪⌐ ╪º┘ä┘à╪ª┘ê┘è╪⌐</h3>
 <div style="display:flex;align-items:center;justify-content:center;padding:20px 0">
 <div class="donut-container" style="width:220px;height:220px">
 <canvas id="donutCanvas" width="220" height="220"></canvas>
 <div class="donut-center">
 <div class="pct" id="donutPct" style="font-size:36px">0%</div>
-<div class="lbl">من العدد الكلي</div>
+<div class="lbl">┘à┘å ╪º┘ä╪╣╪»╪» ╪º┘ä┘â┘ä┘è</div>
 </div>
 </div>
 </div>
 </div>
 <div class="card">
-<h3>أنواع الكاميرات</h3>
+<h3>╪ú┘å┘ê╪º╪╣ ╪º┘ä┘â╪º┘à┘è╪▒╪º╪¬</h3>
 <div class="types-grid" id="typesGrid"></div>
 </div>
 </div>
 
 <div id="tab-cameras" class="tab-content">
 <div class="card">
-<h3>قائمة الكاميرات</h3>
-<input type="text" class="search-box" id="cameraSearch" placeholder="بحث بالاسم أو MAC أو الموقع..." oninput="renderCameras()">
+<h3>┘é╪º╪ª┘à╪⌐ ╪º┘ä┘â╪º┘à┘è╪▒╪º╪¬</h3>
+<input type="text" class="search-box" id="cameraSearch" placeholder="╪¿╪¡╪½ ╪¿╪º┘ä╪º╪│┘à ╪ú┘ê MAC ╪ú┘ê ╪º┘ä┘à┘ê┘é╪╣..." oninput="renderCameras()">
 <div style="display:flex;gap:8px;margin-bottom:12px">
-<button class="btn btn-primary" onclick="openAddCameraModal()" style="flex:0 auto;padding:8px 16px">+ كاميرا جديدة</button>
+<button class="btn btn-primary" onclick="openAddCameraModal()" style="flex:0 auto;padding:8px 16px">+ ┘â╪º┘à┘è╪▒╪º ╪¼╪»┘è╪»╪⌐</button>
 <span id="cameraCount" style="font-size:13px;color:var(--text-secondary);display:flex;align-items:center"></span>
 </div>
 <div style="max-height:500px;overflow:auto">
-<table><thead><tr><th>#</th><th>الاسم</th><th>MAC Address</th><th>النوع</th><th>الموقع</th><th>الحالة</th><th>التاريخ</th><th></th></tr></thead>
+<table><thead><tr><th>#</th><th>╪º┘ä╪º╪│┘à</th><th>MAC Address</th><th>╪º┘ä┘å┘ê╪╣</th><th>╪º┘ä┘à┘ê┘é╪╣</th><th>╪º┘ä╪¡╪º┘ä╪⌐</th><th>╪º┘ä╪¬╪º╪▒┘è╪«</th><th></th></tr></thead>
 <tbody id="camerasTable"></tbody></table>
 </div>
 </div>
@@ -186,19 +186,19 @@ tr:hover td{background:#f8fafc}
 
 <div id="tab-actions" class="tab-content">
 <div class="card">
-<h3>إجراءات عامة</h3>
+<h3>╪Ñ╪¼╪▒╪º╪í╪º╪¬ ╪╣╪º┘à╪⌐</h3>
 <div class="actions-grid" id="generalActions"></div>
 </div>
 <div class="card">
-<h3>إجراءات حسب النوع</h3>
+<h3>╪Ñ╪¼╪▒╪º╪í╪º╪¬ ╪¡╪│╪¿ ╪º┘ä┘å┘ê╪╣</h3>
 <div class="actions-grid" id="typeActions"></div>
 </div>
 <div class="card" id="resetSection" style="display:none">
-<h3>إدارة النظام</h3>
+<h3>╪Ñ╪»╪º╪▒╪⌐ ╪º┘ä┘å╪╕╪º┘à</h3>
 <div class="actions-grid">
 <div class="action-btn" onclick="confirmReset()" style="border-color:#dc2626;color:#dc2626">
 <span style="font-size:24px;color:#dc2626"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
-تصفيرعداد الكاميرات
+╪¬╪╡┘ü┘è╪▒╪╣╪»╪º╪» ╪º┘ä┘â╪º┘à┘è╪▒╪º╪¬
 </div>
 </div>
 </div>
@@ -206,9 +206,9 @@ tr:hover td{background:#f8fafc}
 
 <div id="tab-logs" class="tab-content">
 <div class="card">
-<h3>سجل العمليات</h3>
+<h3>╪│╪¼┘ä ╪º┘ä╪╣┘à┘ä┘è╪º╪¬</h3>
 <div style="max-height:500px;overflow:auto">
-<table><thead><tr><th>التاريخ</th><th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th><th>المستخدم</th></tr></thead>
+<table><thead><tr><th>╪º┘ä╪¬╪º╪▒┘è╪«</th><th>╪º┘ä╪╣┘à┘ä┘è╪⌐</th><th>╪º┘ä┘â┘à┘è╪⌐</th><th>IP Address</th><th>╪º┘ä┘à┘ê┘é╪╣</th><th>╪º┘ä┘à╪│╪¬╪«╪»┘à</th></tr></thead>
 <tbody id="logTable"></tbody></table>
 </div>
 </div>
@@ -216,20 +216,20 @@ tr:hover td{background:#f8fafc}
 
 <div id="tab-reports" class="tab-content">
 <div class="card">
-<h3>سحب التقارير</h3>
+<h3>╪│╪¡╪¿ ╪º┘ä╪¬┘é╪º╪▒┘è╪▒</h3>
 <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px">
-<div class="form-group" style="flex:1;min-width:150px"><label>نوع التقرير</label>
+<div class="form-group" style="flex:1;min-width:150px"><label>┘å┘ê╪╣ ╪º┘ä╪¬┘é╪▒┘è╪▒</label>
 <select id="reportType" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:'Tajawal',sans-serif;font-size:14px">
-<option value="daily">يومي</option>
-<option value="weekly">أسبوعي</option>
-<option value="monthly">شهري</option>
+<option value="daily">┘è┘ê┘à┘è</option>
+<option value="weekly">╪ú╪│╪¿┘ê╪╣┘è</option>
+<option value="monthly">╪┤┘ç╪▒┘è</option>
 </select>
 </div>
-<div class="form-group" style="flex:1;min-width:150px"><label>التاريخ</label>
+<div class="form-group" style="flex:1;min-width:150px"><label>╪º┘ä╪¬╪º╪▒┘è╪«</label>
 <input type="date" id="reportDate" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:'Tajawal',sans-serif;font-size:14px">
 </div>
 <div class="form-group" style="flex:0;min-width:100px;display:flex;align-items:flex-end">
-<button class="btn btn-primary" onclick="pullReport()" style="width:100%;padding:10px">سحب التقرير</button>
+<button class="btn btn-primary" onclick="pullReport()" style="width:100%;padding:10px">╪│╪¡╪¿ ╪º┘ä╪¬┘é╪▒┘è╪▒</button>
 </div>
 </div>
 <div id="reportResult" style="display:none">
@@ -238,8 +238,8 @@ tr:hover td{background:#f8fafc}
 <table><thead><tr id="reportHead"></tr></thead><tbody id="reportBody"></tbody></table>
 </div>
 <div style="margin-top:12px;display:flex;gap:8px">
-<button class="btn btn-primary" onclick="exportReport('csv')" style="flex:1">تصدير CSV</button>
-<button class="btn btn-secondary" onclick="exportReport('print')" style="flex:1">طباعة</button>
+<button class="btn btn-primary" onclick="exportReport('csv')" style="flex:1">╪¬╪╡╪»┘è╪▒ CSV</button>
+<button class="btn btn-secondary" onclick="exportReport('print')" style="flex:1">╪╖╪¿╪º╪╣╪⌐</button>
 </div>
 </div>
 </div>
@@ -247,25 +247,25 @@ tr:hover td{background:#f8fafc}
 
 <div id="tab-inventory" class="tab-content">
 <div class="card">
-<h3>المواقع</h3>
+<h3>╪º┘ä┘à┘ê╪º┘é╪╣</h3>
 <div id="locationsList"></div>
 <div style="display:flex;gap:8px;margin-top:12px">
-<input type="text" id="newLocationInput" placeholder="اسم الموقع الجديد" style="flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:'Tajawal',sans-serif">
-<button class="btn btn-primary" onclick="addLocation()" style="flex:0">إضافة</button>
+<input type="text" id="newLocationInput" placeholder="╪º╪│┘à ╪º┘ä┘à┘ê┘é╪╣ ╪º┘ä╪¼╪»┘è╪»" style="flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:'Tajawal',sans-serif">
+<button class="btn btn-primary" onclick="addLocation()" style="flex:0">╪Ñ╪╢╪º┘ü╪⌐</button>
 </div>
 </div>
 <div class="card">
-<h3>الأجهزة الإضافية</h3>
+<h3>╪º┘ä╪ú╪¼┘ç╪▓╪⌐ ╪º┘ä╪Ñ╪╢╪º┘ü┘è╪⌐</h3>
 <div id="accessoriesList"></div>
 </div>
 </div>
 
 <div id="tab-tasks" class="tab-content">
 <div class="card">
-<h3>الأعمال الجارية</h3>
-<button class="btn btn-primary" onclick="openWorkModal()" style="margin-bottom:12px">+ عمل جديد</button>
+<h3>╪º┘ä╪ú╪╣┘à╪º┘ä ╪º┘ä╪¼╪º╪▒┘è╪⌐</h3>
+<button class="btn btn-primary" onclick="openWorkModal()" style="margin-bottom:12px">+ ╪╣┘à┘ä ╪¼╪»┘è╪»</button>
 <div style="max-height:500px;overflow:auto">
-<table><thead><tr><th>التاريخ</th><th>الوصف</th><th>النوع</th><th>الموقع</th><th>العدد</th><th>الحالة</th><th></th></tr></thead>
+<table><thead><tr><th>╪º┘ä╪¬╪º╪▒┘è╪«</th><th>╪º┘ä┘ê╪╡┘ü</th><th>╪º┘ä┘å┘ê╪╣</th><th>╪º┘ä┘à┘ê┘é╪╣</th><th>╪º┘ä╪╣╪»╪»</th><th>╪º┘ä╪¡╪º┘ä╪⌐</th><th></th></tr></thead>
 <tbody id="workTable"></tbody></table>
 </div>
 </div>
@@ -273,8 +273,8 @@ tr:hover td{background:#f8fafc}
 
 <div id="tab-users" class="tab-content">
 <div class="card">
-<h3>المستخدمين</h3>
-<table><thead><tr><th>المستخدم</th><th>البريد</th><th>الدور</th><th>الصلاحية</th><th></th></tr></thead>
+<h3>╪º┘ä┘à╪│╪¬╪«╪»┘à┘è┘å</h3>
+<table><thead><tr><th>╪º┘ä┘à╪│╪¬╪«╪»┘à</th><th>╪º┘ä╪¿╪▒┘è╪»</th><th>╪º┘ä╪»┘ê╪▒</th><th>╪º┘ä╪╡┘ä╪º╪¡┘è╪⌐</th><th></th></tr></thead>
 <tbody id="usersTable"></tbody></table>
 </div>
 </div>
@@ -282,10 +282,10 @@ tr:hover td{background:#f8fafc}
 
 <div class="modal" id="actionModal">
 <div class="modal-content">
-<h3 id="actionModalTitle">إجراء</h3>
-<div class="form-group" id="typeSelectGroup" style="display:none"><label>نوع الكاميرا</label>
+<h3 id="actionModalTitle">╪Ñ╪¼╪▒╪º╪í</h3>
+<div class="form-group" id="typeSelectGroup" style="display:none"><label>┘å┘ê╪╣ ╪º┘ä┘â╪º┘à┘è╪▒╪º</label>
 <select id="actionTypeSelect">
-<option value="">كافة الأنواع</option>
+<option value="">┘â╪º┘ü╪⌐ ╪º┘ä╪ú┘å┘ê╪º╪╣</option>
 <option value="bullet">BULLET</option>
 <option value="ptz">PTZ</option>
 <option value="panvu">PANVU</option>
@@ -293,8 +293,8 @@ tr:hover td{background:#f8fafc}
 <option value="moto">MOTO</option>
 <option value="dome">DOME</option>
 <option value="anti_corrosion">ANTI CORUSION</option>
-<option value="fingerprints">البصمات</option>
-<option value="gates">البوابات</option>
+<option value="fingerprints">╪º┘ä╪¿╪╡┘à╪º╪¬</option>
+<option value="gates">╪º┘ä╪¿┘ê╪º╪¿╪º╪¬</option>
 <option value="switch">SWITCH</option>
 <option value="nvr">NVR</option>
 <option value="hdd">HARD DISK</option>
@@ -302,23 +302,23 @@ tr:hover td{background:#f8fafc}
 <option value="antenna">ANTENNA</option>
 </select>
 </div>
-<div class="form-group"><label>الكمية</label><input type="number" id="actionQty" value="1" min="1"></div>
-<div class="form-group" id="ipGroup" style="display:none"><label>IP Address</label><input type="text" id="actionIP" placeholder="مثال: 192.168.1.100" style="direction:ltr;text-align:left"></div>
-<div class="form-group" id="macGroup" style="display:none"><label>MAC Address</label><input type="text" id="actionMAC" placeholder="مثال: AA:BB:CC:DD:EE:FF" style="direction:ltr;text-align:left"></div>
-<div class="form-group"><label>الموقع</label><select id="actionLocation"></select></div>
+<div class="form-group"><label>╪º┘ä┘â┘à┘è╪⌐</label><input type="number" id="actionQty" value="1" min="1"></div>
+<div class="form-group" id="ipGroup" style="display:none"><label>IP Address</label><input type="text" id="actionIP" placeholder="┘à╪½╪º┘ä: 192.168.1.100" style="direction:ltr;text-align:left"></div>
+<div class="form-group" id="macGroup" style="display:none"><label>MAC Address</label><input type="text" id="actionMAC" placeholder="┘à╪½╪º┘ä: AA:BB:CC:DD:EE:FF" style="direction:ltr;text-align:left"></div>
+<div class="form-group"><label>╪º┘ä┘à┘ê┘é╪╣</label><select id="actionLocation"></select></div>
 <div class="btn-row">
-<button class="btn btn-primary" onclick="submitAction()">تأكيد</button>
-<button class="btn btn-secondary" onclick="closeModal('actionModal')">إلغاء</button>
+<button class="btn btn-primary" onclick="submitAction()">╪¬╪ú┘â┘è╪»</button>
+<button class="btn btn-secondary" onclick="closeModal('actionModal')">╪Ñ┘ä╪║╪º╪í</button>
 </div>
 </div>
 </div>
 
 <div class="modal" id="addCameraModal">
 <div class="modal-content">
-<h3>إضافة كاميرا جديدة</h3>
-<div class="form-group"><label>اسم الكاميرا</label><input type="text" id="camName" placeholder="اسم الكاميرا"></div>
-<div class="form-group"><label>MAC Address</label><input type="text" id="camMAC" placeholder="مثال: AA:BB:CC:DD:EE:FF" style="direction:ltr;text-align:left"></div>
-<div class="form-group"><label>نوع الكاميرا</label>
+<h3>╪Ñ╪╢╪º┘ü╪⌐ ┘â╪º┘à┘è╪▒╪º ╪¼╪»┘è╪»╪⌐</h3>
+<div class="form-group"><label>╪º╪│┘à ╪º┘ä┘â╪º┘à┘è╪▒╪º</label><input type="text" id="camName" placeholder="╪º╪│┘à ╪º┘ä┘â╪º┘à┘è╪▒╪º"></div>
+<div class="form-group"><label>MAC Address</label><input type="text" id="camMAC" placeholder="┘à╪½╪º┘ä: AA:BB:CC:DD:EE:FF" style="direction:ltr;text-align:left"></div>
+<div class="form-group"><label>┘å┘ê╪╣ ╪º┘ä┘â╪º┘à┘è╪▒╪º</label>
 <select id="camType">
 <option value="bullet">BULLET</option>
 <option value="ptz">PTZ</option>
@@ -327,33 +327,33 @@ tr:hover td{background:#f8fafc}
 <option value="moto">MOTO</option>
 <option value="dome">DOME</option>
 <option value="anti_corrosion">ANTI CORUSION</option>
-<option value="fingerprints">البصمات</option>
-<option value="gates">البوابات</option>
+<option value="fingerprints">╪º┘ä╪¿╪╡┘à╪º╪¬</option>
+<option value="gates">╪º┘ä╪¿┘ê╪º╪¿╪º╪¬</option>
 </select>
 </div>
-<div class="form-group"><label>الموقع</label><select id="camLocation"></select></div>
-<div class="form-group"><label>الحالة</label>
+<div class="form-group"><label>╪º┘ä┘à┘ê┘é╪╣</label><select id="camLocation"></select></div>
+<div class="form-group"><label>╪º┘ä╪¡╪º┘ä╪⌐</label>
 <select id="camStatus">
-<option value="warehouse">في المخزن</option>
-<option value="deployed">في الخدمة</option>
-<option value="maintenance">صيانة</option>
-<option value="out_of_service">خارج الخدمة</option>
+<option value="warehouse">┘ü┘è ╪º┘ä┘à╪«╪▓┘å</option>
+<option value="deployed">┘ü┘è ╪º┘ä╪«╪»┘à╪⌐</option>
+<option value="maintenance">╪╡┘è╪º┘å╪⌐</option>
+<option value="out_of_service">╪«╪º╪▒╪¼ ╪º┘ä╪«╪»┘à╪⌐</option>
 </select>
 </div>
 <div class="btn-row">
-<button class="btn btn-primary" onclick="submitAddCamera()">إضافة</button>
-<button class="btn btn-secondary" onclick="closeModal('addCameraModal')">إلغاء</button>
+<button class="btn btn-primary" onclick="submitAddCamera()">╪Ñ╪╢╪º┘ü╪⌐</button>
+<button class="btn btn-secondary" onclick="closeModal('addCameraModal')">╪Ñ┘ä╪║╪º╪í</button>
 </div>
 </div>
 </div>
 
 <div class="modal" id="editCameraModal">
 <div class="modal-content">
-<h3>تعديل الكاميرا</h3>
+<h3>╪¬╪╣╪»┘è┘ä ╪º┘ä┘â╪º┘à┘è╪▒╪º</h3>
 <input type="hidden" id="editCamKey">
-<div class="form-group"><label>اسم الكاميرا</label><input type="text" id="editCamName"></div>
+<div class="form-group"><label>╪º╪│┘à ╪º┘ä┘â╪º┘à┘è╪▒╪º</label><input type="text" id="editCamName"></div>
 <div class="form-group"><label>MAC Address</label><input type="text" id="editCamMAC" style="direction:ltr;text-align:left"></div>
-<div class="form-group"><label>نوع الكاميرا</label>
+<div class="form-group"><label>┘å┘ê╪╣ ╪º┘ä┘â╪º┘à┘è╪▒╪º</label>
 <select id="editCamType">
 <option value="bullet">BULLET</option>
 <option value="ptz">PTZ</option>
@@ -362,52 +362,52 @@ tr:hover td{background:#f8fafc}
 <option value="moto">MOTO</option>
 <option value="dome">DOME</option>
 <option value="anti_corrosion">ANTI CORUSION</option>
-<option value="fingerprints">البصمات</option>
-<option value="gates">البوابات</option>
+<option value="fingerprints">╪º┘ä╪¿╪╡┘à╪º╪¬</option>
+<option value="gates">╪º┘ä╪¿┘ê╪º╪¿╪º╪¬</option>
 </select>
 </div>
-<div class="form-group"><label>الموقع</label><select id="editCamLocation"></select></div>
-<div class="form-group"><label>الحالة</label>
+<div class="form-group"><label>╪º┘ä┘à┘ê┘é╪╣</label><select id="editCamLocation"></select></div>
+<div class="form-group"><label>╪º┘ä╪¡╪º┘ä╪⌐</label>
 <select id="editCamStatus">
-<option value="warehouse">في المخزن</option>
-<option value="deployed">في الخدمة</option>
-<option value="maintenance">صيانة</option>
-<option value="out_of_service">خارج الخدمة</option>
+<option value="warehouse">┘ü┘è ╪º┘ä┘à╪«╪▓┘å</option>
+<option value="deployed">┘ü┘è ╪º┘ä╪«╪»┘à╪⌐</option>
+<option value="maintenance">╪╡┘è╪º┘å╪⌐</option>
+<option value="out_of_service">╪«╪º╪▒╪¼ ╪º┘ä╪«╪»┘à╪⌐</option>
 </select>
 </div>
 <div class="btn-row">
-<button class="btn btn-primary" onclick="submitEditCamera()">حفظ</button>
-<button class="btn btn-secondary" onclick="closeModal('editCameraModal')">إلغاء</button>
+<button class="btn btn-primary" onclick="submitEditCamera()">╪¡┘ü╪╕</button>
+<button class="btn btn-secondary" onclick="closeModal('editCameraModal')">╪Ñ┘ä╪║╪º╪í</button>
 </div>
 </div>
 </div>
 
 <div class="modal" id="workModal">
 <div class="modal-content">
-<h3>عمل جديد</h3>
-<div class="form-group"><label>الوصف</label><input type="text" id="workDesc"></div>
-<div class="form-group"><label>نوع العمل</label>
-<select id="workType"><option value="تركيب">تركيب</option><option value="صيانة">صيانة</option><option value="فك">فك</option><option value="أخرى">أخرى</option></select>
+<h3>╪╣┘à┘ä ╪¼╪»┘è╪»</h3>
+<div class="form-group"><label>╪º┘ä┘ê╪╡┘ü</label><input type="text" id="workDesc"></div>
+<div class="form-group"><label>┘å┘ê╪╣ ╪º┘ä╪╣┘à┘ä</label>
+<select id="workType"><option value="╪¬╪▒┘â┘è╪¿">╪¬╪▒┘â┘è╪¿</option><option value="╪╡┘è╪º┘å╪⌐">╪╡┘è╪º┘å╪⌐</option><option value="┘ü┘â">┘ü┘â</option><option value="╪ú╪«╪▒┘ë">╪ú╪«╪▒┘ë</option></select>
 </div>
-<div class="form-group"><label>الموقع</label><select id="workLocation"></select></div>
-<div class="form-group"><label>العدد</label><input type="number" id="workQty" value="1" min="1"></div>
+<div class="form-group"><label>╪º┘ä┘à┘ê┘é╪╣</label><select id="workLocation"></select></div>
+<div class="form-group"><label>╪º┘ä╪╣╪»╪»</label><input type="number" id="workQty" value="1" min="1"></div>
 <div class="btn-row">
-<button class="btn btn-primary" onclick="submitWork()">إضافة</button>
-<button class="btn btn-secondary" onclick="closeModal('workModal')">إلغاء</button>
+<button class="btn btn-primary" onclick="submitWork()">╪Ñ╪╢╪º┘ü╪⌐</button>
+<button class="btn btn-secondary" onclick="closeModal('workModal')">╪Ñ┘ä╪║╪º╪í</button>
 </div>
 </div>
 </div>
 
 <div class="modal" id="registerModal">
 <div class="modal-content">
-<h3>تسجيل حساب جديد</h3>
-<div class="form-group"><label>اسم المستخدم</label><input type="text" id="regUser" placeholder="اسم المستخدم (3 أحرف على الأقل)"></div>
-<div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="regEmail" placeholder="example@email.com" style="direction:ltr;text-align:left"></div>
-<div class="form-group"><label>كلمة المرور</label><input type="password" id="regPass" placeholder="كلمة المرور (4 أحرف على الأقل)"></div>
-<div class="form-group"><label>تأكيد كلمة المرور</label><input type="password" id="regPass2" placeholder="أعد كتابة كلمة المرور"></div>
+<h3>╪¬╪│╪¼┘è┘ä ╪¡╪│╪º╪¿ ╪¼╪»┘è╪»</h3>
+<div class="form-group"><label>╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à</label><input type="text" id="regUser" placeholder="╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à (3 ╪ú╪¡╪▒┘ü ╪╣┘ä┘ë ╪º┘ä╪ú┘é┘ä)"></div>
+<div class="form-group"><label>╪º┘ä╪¿╪▒┘è╪» ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è</label><input type="email" id="regEmail" placeholder="example@email.com" style="direction:ltr;text-align:left"></div>
+<div class="form-group"><label>┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒</label><input type="password" id="regPass" placeholder="┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒ (4 ╪ú╪¡╪▒┘ü ╪╣┘ä┘ë ╪º┘ä╪ú┘é┘ä)"></div>
+<div class="form-group"><label>╪¬╪ú┘â┘è╪» ┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒</label><input type="password" id="regPass2" placeholder="╪ú╪╣╪» ┘â╪¬╪º╪¿╪⌐ ┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒"></div>
 <div class="btn-row">
-<button class="btn btn-primary" onclick="doRegister()">تسجيل</button>
-<button class="btn btn-secondary" onclick="closeModal('registerModal')">إلغاء</button>
+<button class="btn btn-primary" onclick="doRegister()">╪¬╪│╪¼┘è┘ä</button>
+<button class="btn btn-secondary" onclick="closeModal('registerModal')">╪Ñ┘ä╪║╪º╪í</button>
 </div>
 <div id="regErr" class="login-error"></div>
 </div>
@@ -415,14 +415,14 @@ tr:hover td{background:#f8fafc}
 
 <div class="modal" id="forgotModal">
 <div class="modal-content">
-<h3>نسيت كلمة المرور</h3>
-<p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">أدخل اسم المستخدم وبريدك الإلكتروني المسجل</p>
-<div class="form-group"><label>اسم المستخدم</label><input type="text" id="forgotUser"></div>
-<div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="forgotEmail" style="direction:ltr;text-align:left"></div>
-<div class="form-group"><label>كلمة المرور الجديدة</label><input type="password" id="forgotNewPass"></div>
+<h3>┘å╪│┘è╪¬ ┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒</h3>
+<p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">╪ú╪»╪«┘ä ╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à ┘ê╪¿╪▒┘è╪»┘â ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è ╪º┘ä┘à╪│╪¼┘ä</p>
+<div class="form-group"><label>╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à</label><input type="text" id="forgotUser"></div>
+<div class="form-group"><label>╪º┘ä╪¿╪▒┘è╪» ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è</label><input type="email" id="forgotEmail" style="direction:ltr;text-align:left"></div>
+<div class="form-group"><label>┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒ ╪º┘ä╪¼╪»┘è╪»╪⌐</label><input type="password" id="forgotNewPass"></div>
 <div class="btn-row">
-<button class="btn btn-primary" onclick="doForgot()">إعادة التعيين</button>
-<button class="btn btn-secondary" onclick="closeModal('forgotModal')">إلغاء</button>
+<button class="btn btn-primary" onclick="doForgot()">╪Ñ╪╣╪º╪»╪⌐ ╪º┘ä╪¬╪╣┘è┘è┘å</button>
+<button class="btn btn-secondary" onclick="closeModal('forgotModal')">╪Ñ┘ä╪║╪º╪í</button>
 </div>
 <div id="forgotErr" class="login-error"></div>
 </div>
@@ -435,14 +435,14 @@ let state={},locations=[],logs=[],works=[],users=[],cameras=[],accessories=[];
 let actionType='',actionTitle='';
 let curUser='',curRole='user',curPerm='edit';
 
-async function dbGet(p){try{const r=await fetch(DB_URL+p+'.json');if(!r.ok)throw new Error(r.status);const d=await r.json();return d}catch(e){console.error('dbGet error:',p,e);return null}}
-async function dbSet(p,d){try{await fetch(DB_URL+p+'.json',{method:'PUT',body:JSON.stringify(d)})}catch(e){console.error('dbSet error:',p,e)}}
-async function dbPush(p,d){try{const r=await fetch(DB_URL+p+'.json',{method:'POST',body:JSON.stringify(d)});return await r.json()}catch(e){console.error('dbPush error:',p,e);return null}}
-async function dbDel(p){try{await fetch(DB_URL+p+'.json',{method:'DELETE'})}catch(e){console.error('dbDel error:',p,e)}}
+async function dbGet(p){try{const c=new AbortController();const t=setTimeout(()=>c.abort(),15000);const r=await fetch(DB_URL+p+'.json',{signal:c.signal});clearTimeout(t);if(!r.ok)throw new Error(r.status);const d=await r.json();return d}catch(e){console.error('dbGet error:',p,e);return null}}
+async function dbSet(p,d){try{const c=new AbortController();const t=setTimeout(()=>c.abort(),15000);await fetch(DB_URL+p+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),signal:c.signal});clearTimeout(t)}catch(e){console.error('dbSet error:',p,e)}}
+async function dbPush(p,d){try{const c=new AbortController();const t=setTimeout(()=>c.abort(),15000);const r=await fetch(DB_URL+p+'.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),signal:c.signal});clearTimeout(t);return await r.json()}catch(e){console.error('dbPush error:',p,e);return null}}
+async function dbDel(p){try{const c=new AbortController();const t=setTimeout(()=>c.abort(),15000);await fetch(DB_URL+p+'.json',{method:'DELETE',signal:c.signal});clearTimeout(t)}catch(e){console.error('dbDel error:',p,e)}}
 
 const camTypes=[
-{key:'fingerprints',label:'البصمات',color:'#7c3aed'},
-{key:'gates',label:'البوابات',color:'#dc2626'},
+{key:'fingerprints',label:'╪º┘ä╪¿╪╡┘à╪º╪¬',color:'#7c3aed'},
+{key:'gates',label:'╪º┘ä╪¿┘ê╪º╪¿╪º╪¬',color:'#dc2626'},
 {key:'bullet',label:'BULLET',color:'#2563eb'},
 {key:'ptz',label:'PTZ',color:'#059669'},
 {key:'panvu',label:'PANVU',color:'#d97706'},
@@ -452,7 +452,7 @@ const camTypes=[
 {key:'anti_corrosion',label:'ANTI CORUSION',color:'#65a30d'}
 ];
 
-const statusLabels={warehouse:'في المخزن',deployed:'في الخدمة',maintenance:'صيانة',out_of_service:'خارج الخدمة'};
+const statusLabels={warehouse:'┘ü┘è ╪º┘ä┘à╪«╪▓┘å',deployed:'┘ü┘è ╪º┘ä╪«╪»┘à╪⌐',maintenance:'╪╡┘è╪º┘å╪⌐',out_of_service:'╪«╪º╪▒╪¼ ╪º┘ä╪«╪»┘à╪⌐'};
 const statusColors={warehouse:'#059669',deployed:'#2563eb',maintenance:'#d97706',out_of_service:'#dc2626'};
 
 async function doLogin(){
@@ -460,17 +460,17 @@ const un=document.getElementById('loginUser').value.trim();
 const pw=document.getElementById('loginPass').value.trim();
 const er=document.getElementById('loginErr');
 er.style.display='none';
-if(!un||!pw){er.style.display='block';er.textContent='أدخل اسم المستخدم وكلمة المرور';return}
+if(!un||!pw){er.style.display='block';er.textContent='╪ú╪»╪«┘ä ╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à ┘ê┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒';return}
 console.log('Attempting login:',un);
 const us=await dbGet('users');
 console.log('Users from DB:',us);
-if(!us){er.style.display='block';er.textContent='تعذر الاتصال بقاعدة البيانات. تحقق من интернет';return}
+if(!us){er.style.display='block';er.textContent='╪¬╪╣╪░╪▒ ╪º┘ä╪º╪¬╪╡╪º┘ä ╪¿┘é╪º╪╣╪»╪⌐ ╪º┘ä╪¿┘è╪º┘å╪º╪¬. ╪¬╪¡┘é┘é ┘à┘å ╨╕╨╜╤é╨╡╤Ç╨╜╨╡╤é';return}
 let found=null;
 Object.values(us).forEach(u=>{if(u.username===un&&u.password===pw)found=u});
 if(!found){
 const userExists=Object.values(us).some(u=>u.username===un);
-if(userExists){er.style.display='block';er.textContent='كلمة المرور غير صحيحة'}
-else{er.style.display='block';er.textContent='اسم المستخدم غير مسجل'}
+if(userExists){er.style.display='block';er.textContent='┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒ ╪║┘è╪▒ ╪╡╪¡┘è╪¡╪⌐'}
+else{er.style.display='block';er.textContent='╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à ╪║┘è╪▒ ┘à╪│╪¼┘ä'}
 return}
 curUser=found.username;curRole=found.role||'user';curPerm=found.permission||'edit';
 if(curUser==='yousef'){curRole='admin';curPerm='edit';}
@@ -500,8 +500,8 @@ document.getElementById('appContainer').classList.remove('view-only');
 document.getElementById('userFloat').style.display='none';
 }
 
-function showRegister(){document.getElementById('registerModal').classList.add('active')}
-function showForgot(){document.getElementById('forgotModal').classList.add('active')}
+function showRegister(){console.log('showRegister called');document.getElementById('registerModal').classList.add('active')}
+function showForgot(){console.log('showForgot called');document.getElementById('forgotModal').classList.add('active')}
 
 async function doRegister(){
 const un=document.getElementById('regUser').value.trim();
@@ -509,19 +509,28 @@ const email=document.getElementById('regEmail').value.trim();
 const pw=document.getElementById('regPass').value.trim();
 const pw2=document.getElementById('regPass2').value.trim();
 const er=document.getElementById('regErr');
-if(!un||un.length<3){er.style.display='block';er.textContent='اسم المستخدم 3 أحرف على الأقل';return}
-if(!email||!email.includes('@')){er.style.display='block';er.textContent='أدخل بريد صحيح';return}
-if(!pw||pw.length<4){er.style.display='block';er.textContent='كلمة المرور 4 أحرف على الأقل';return}
-if(pw!==pw2){er.style.display='block';er.textContent='كلمتا المرور غير متطابقتين';return}
+er.style.display='none';
+if(!un||un.length<3){er.style.display='block';er.textContent='╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à 3 ╪ú╪¡╪▒┘ü ╪╣┘ä┘ë ╪º┘ä╪ú┘é┘ä';return}
+if(!email||!email.includes('@')){er.style.display='block';er.textContent='╪ú╪»╪«┘ä ╪¿╪▒┘è╪» ╪╡╪¡┘è╪¡';return}
+if(!pw||pw.length<4){er.style.display='block';er.textContent='┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒ 4 ╪ú╪¡╪▒┘ü ╪╣┘ä┘ë ╪º┘ä╪ú┘é┘ä';return}
+if(pw!==pw2){er.style.display='block';er.textContent='┘â┘ä┘à╪¬╪º ╪º┘ä┘à╪▒┘ê╪▒ ╪║┘è╪▒ ┘à╪¬╪╖╪º╪¿┘é╪¬┘è┘å';return}
+er.style.display='block';er.textContent='╪¼╪º╪▒┘è ╪º┘ä╪¬╪│╪¼┘è┘ä...';er.style.color='var(--primary)';
+try{
 const us=await dbGet('users')||{};
 let exists=false;
-Object.values(us).forEach(u=>{if(u.username===un)exists=true});
-if(exists){er.style.display='block';er.textContent='اسم المستخدم موجود مسبقاً';return}
-await dbPush('users',{username:un,password:pw,email:email,role:'user',permission:'edit'});
+if(us){Object.values(us).forEach(u=>{if(u.username===un)exists=true})}
+if(exists){er.style.display='block';er.textContent='╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à ┘à┘ê╪¼┘ê╪» ┘à╪│╪¿┘é╪º┘ï';er.style.color='#dc2626';return}
+const result=await dbPush('users',{username:un,password:pw,email:email,role:'user',permission:'edit'});
+if(result===null){er.style.display='block';er.textContent='╪¬╪╣╪░╪▒ ╪º┘ä╪º╪¬╪╡╪º┘ä ╪¿╪º┘ä╪«╪º╪»┘à. ╪¬╪¡┘é┘é ┘à┘å ╪º┘ä╪Ñ┘å╪¬╪▒┘å╪¬ ┘ê╪¡╪º┘ê┘ä ┘à╪▒╪⌐ ╪ú╪«╪▒┘ë';er.style.color='#dc2626';return}
 closeModal('registerModal');
 er.style.display='none';
-alert('تم التسجيل بنجاح! سجّل دخول الحين');
+toast('╪¬┘à ╪º┘ä╪¬╪│╪¼┘è┘ä ╪¿┘å╪¼╪º╪¡! ╪│╪¼┘æ┘ä ╪»╪«┘ê┘ä ╪º┘ä╪¡┘è┘å');
 document.getElementById('loginUser').value=un;
+document.getElementById('regUser').value='';
+document.getElementById('regEmail').value='';
+document.getElementById('regPass').value='';
+document.getElementById('regPass2').value='';
+}catch(e){console.error('Register error:',e);er.style.display='block';er.textContent='╪¡╪»╪½ ╪«╪╖╪ú ╪║┘è╪▒ ┘à╪¬┘ê┘é╪╣. ╪¡╪º┘ê┘ä ┘à╪▒╪⌐ ╪ú╪«╪▒┘ë';er.style.color='#dc2626'}
 }
 
 async function doForgot(){
@@ -529,19 +538,23 @@ const un=document.getElementById('forgotUser').value.trim();
 const email=document.getElementById('forgotEmail').value.trim();
 const newPass=document.getElementById('forgotNewPass').value.trim();
 const er=document.getElementById('forgotErr');
-if(!un||!email||!newPass){er.style.display='block';er.textContent='أدخل كل البيانات';return}
-if(newPass.length<4){er.style.display='block';er.textContent='كلمة المرور 4 أحرف على الأقل';return}
+er.style.display='none';
+if(!un||!email||!newPass){er.style.display='block';er.textContent='╪ú╪»╪«┘ä ┘â┘ä ╪º┘ä╪¿┘è╪º┘å╪º╪¬';return}
+if(newPass.length<4){er.style.display='block';er.textContent='┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒ 4 ╪ú╪¡╪▒┘ü ╪╣┘ä┘ë ╪º┘ä╪ú┘é┘ä';return}
+er.style.display='block';er.textContent='╪¼╪º╪▒┘è ╪º┘ä╪¬╪¡╪»┘è╪½...';er.style.color='var(--primary)';
+try{
 const us=await dbGet('users')||{};
 let foundKey=null;
-Object.entries(us).forEach(([k,u])=>{if(u.username===un&&u.email===email)foundKey=k});
-if(!foundKey){er.style.display='block';er.textContent='اسم المستخدم أو البريد غير مسجل في النظام';return}
+if(us){Object.entries(us).forEach(([k,u])=>{if(u.username===un&&u.email===email)foundKey=k})}
+if(!foundKey){er.style.display='block';er.textContent='╪º╪│┘à ╪º┘ä┘à╪│╪¬╪«╪»┘à ╪ú┘ê ╪º┘ä╪¿╪▒┘è╪» ╪║┘è╪▒ ┘à╪│╪¼┘ä ┘ü┘è ╪º┘ä┘å╪╕╪º┘à';er.style.color='#dc2626';return}
 const u=us[foundKey];
-if(u.username==='yousef'){er.style.display='block';er.textContent='لا يمكن تغيير كلمة مرور الأدمن الرئيسي';return}
+if(u.username==='yousef'){er.style.display='block';er.textContent='┘ä╪º ┘è┘à┘â┘å ╪¬╪║┘è┘è╪▒ ┘â┘ä┘à╪⌐ ┘à╪▒┘ê╪▒ ╪º┘ä╪ú╪»┘à┘å ╪º┘ä╪▒╪ª┘è╪│┘è';er.style.color='#dc2626';return}
 u.password=newPass;
 await dbSet('users/'+foundKey,u);
 closeModal('forgotModal');
 er.style.display='none';
-alert('تم تغيير كلمة المرور بنجاح! سجّل دخول الحين');
+toast('╪¬┘à ╪¬╪║┘è┘è╪▒ ┘â┘ä┘à╪⌐ ╪º┘ä┘à╪▒┘ê╪▒ ╪¿┘å╪¼╪º╪¡! ╪│╪¼┘æ┘ä ╪»╪«┘ê┘ä ╪º┘ä╪¡┘è┘å');
+}catch(e){console.error('Forgot error:',e);er.style.display='block';er.textContent='╪¡╪»╪½ ╪«╪╖╪ú. ╪¡╪º┘ê┘ä ┘à╪▒╪⌐ ╪ú╪«╪▒┘ë';er.style.color='#dc2626'}
 }
 
 async function loadAll(){
@@ -562,10 +575,10 @@ renderStats();renderTypes();renderLogs();renderLocations();renderAccessories();r
 function renderStats(){
 const s=state;
 const items=[
-{l:'العدد الكلي',v:s.total||0,bg:'#dbeafe',c:'#1e40af',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>'},
-{l:'في المخزن',v:s.warehouse||0,bg:'#d1fae5',c:'#065f46',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0022 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'},
-{l:'صيانة',v:s.maintenance||0,bg:'#fee2e2',c:'#991b1b',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>'},
-{l:'خارج الخدمة',v:s.out_of_service||0,bg:'#f3e8ff',c:'#6b21a8',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'}
+{l:'╪º┘ä╪╣╪»╪» ╪º┘ä┘â┘ä┘è',v:s.total||0,bg:'#dbeafe',c:'#1e40af',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>'},
+{l:'┘ü┘è ╪º┘ä┘à╪«╪▓┘å',v:s.warehouse||0,bg:'#d1fae5',c:'#065f46',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0022 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'},
+{l:'╪╡┘è╪º┘å╪⌐',v:s.maintenance||0,bg:'#fee2e2',c:'#991b1b',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>'},
+{l:'╪«╪º╪▒╪¼ ╪º┘ä╪«╪»┘à╪⌐',v:s.out_of_service||0,bg:'#f3e8ff',c:'#6b21a8',i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'}
 ];
 document.getElementById('statsGrid').innerHTML=items.map(i=>
 '<div class="stat-card" style="cursor:pointer" onclick="this.style.transform=\'scale(0.95)\';setTimeout(()=>this.style.transform=\'\',150)"><div class="stat-icon" style="background:'+i.bg+'">'+i.i+'</div><div class="stat-value" style="color:'+i.c+'">'+i.v+'</div><div class="stat-label">'+i.l+'</div></div>'
@@ -586,9 +599,9 @@ function renderCameras(){
 const q=(document.getElementById('cameraSearch')?document.getElementById('cameraSearch').value:'').trim().toLowerCase();
 let filtered=cameras;
 if(q){filtered=cameras.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.mac||'').toLowerCase().includes(q)||(c.location||'').toLowerCase().includes(q))}
-document.getElementById('cameraCount').textContent='العدد: '+filtered.length+' / '+cameras.length;
+document.getElementById('cameraCount').textContent='╪º┘ä╪╣╪»╪»: '+filtered.length+' / '+cameras.length;
 document.getElementById('camerasTable').innerHTML=filtered.map((c,i)=>
-'<tr><td>'+(i+1)+'</td><td style="font-weight:700">'+(c.name||'')+'</td><td style="direction:ltr;text-align:left;font-family:monospace;color:var(--primary)">'+(c.mac||'—')+'</td><td>'+(getTypeLabel(c.type))+'</td><td>'+(c.location||'')+'</td><td><span style="background:'+statusColors[c.status]+';color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">'+(statusLabels[c.status]||c.status)+'</span></td><td>'+(c.date||'')+'</td><td>'+(curRole==='admin'?'<button class="btn btn-primary" style="padding:3px 8px;font-size:11px;margin:2px" onclick="editCamera(\''+c._key+'\')">تعديل</button><button class="btn btn-danger" style="padding:3px 8px;font-size:11px;margin:2px" onclick="deleteCamera(\''+c._key+'\')">حذف</button>':'')+'</td></tr>'
+'<tr><td>'+(i+1)+'</td><td style="font-weight:700">'+(c.name||'')+'</td><td style="direction:ltr;text-align:left;font-family:monospace;color:var(--primary)">'+(c.mac||'ΓÇö')+'</td><td>'+(getTypeLabel(c.type))+'</td><td>'+(c.location||'')+'</td><td><span style="background:'+statusColors[c.status]+';color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">'+(statusLabels[c.status]||c.status)+'</span></td><td>'+(c.date||'')+'</td><td>'+(curRole==='admin'?'<button class="btn btn-primary" style="padding:3px 8px;font-size:11px;margin:2px" onclick="editCamera(\''+c._key+'\')">╪¬╪╣╪»┘è┘ä</button><button class="btn btn-danger" style="padding:3px 8px;font-size:11px;margin:2px" onclick="deleteCamera(\''+c._key+'\')">╪¡╪░┘ü</button>':'')+'</td></tr>'
 ).join('');
 }
 
@@ -599,30 +612,30 @@ return t?t.label:(type||'');
 
 function renderLogs(){
 document.getElementById('logTable').innerHTML=logs.map(l=>
-'<tr><td>'+(l.op_date||'')+'</td><td>'+(l.operation||'')+'</td><td>'+(l.quantity||0)+'</td><td style="direction:ltr;text-align:left;font-family:monospace">'+(l.ip||'—')+'</td><td>'+(l.location||'')+'</td><td>'+(l.username||'')+'</td></tr>'
+'<tr><td>'+(l.op_date||'')+'</td><td>'+(l.operation||'')+'</td><td>'+(l.quantity||0)+'</td><td style="direction:ltr;text-align:left;font-family:monospace">'+(l.ip||'ΓÇö')+'</td><td>'+(l.location||'')+'</td><td>'+(l.username||'')+'</td></tr>'
 ).join('');
 }
 
 function renderLocations(){
 document.getElementById('locationsList').innerHTML=locations.map(l=>
-'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid var(--border)"><span style="font-size:16px;font-weight:700">'+l.name+' <span style="color:var(--text-secondary);font-size:12px;font-weight:400">(مُنسحب: '+(l.withdrawn_count||0)+')</span></span>'+(curRole==='admin'?'<button style="background:none;border:1px solid #dc2626;color:#dc2626;padding:3px 8px;border-radius:6px;cursor:pointer;font-size:11px;font-family:Tajawal,sans-serif" onclick="deleteLocation(\''+l._key+'\',\''+l.name+'\')">حذف</button>':'')+'</div>'
+'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid var(--border)"><span style="font-size:16px;font-weight:700">'+l.name+' <span style="color:var(--text-secondary);font-size:12px;font-weight:400">(┘à┘Å┘å╪│╪¡╪¿: '+(l.withdrawn_count||0)+')</span></span>'+(curRole==='admin'?'<button style="background:none;border:1px solid #dc2626;color:#dc2626;padding:3px 8px;border-radius:6px;cursor:pointer;font-size:11px;font-family:Tajawal,sans-serif" onclick="deleteLocation(\''+l._key+'\',\''+l.name+'\')">╪¡╪░┘ü</button>':'')+'</div>'
 ).join('');
 }
 
 const eqLabels={switch:'SWITCH',nvr:'NVR',hdd:'HARD DISK',ups:'UPS',rocket_m5:'ROCKET M5',lightbeam_ac:'LIGHTBEAM AC',power_beam:'POWER BEAM'};
 const eqColors={switch:'#2563eb',nvr:'#7c3aed',hdd:'#059669',ups:'#d97706',rocket_m5:'#e11d48',lightbeam_ac:'#0891b2',power_beam:'#ea580c'};
 function renderAccessories(){
-if(!accessories.length){document.getElementById('accessoriesList').innerHTML='<div style="text-align:center;padding:20px;color:var(--text-secondary);font-size:14px">لا توجد أجهزة إضافية مسجلة</div>';return}
+if(!accessories.length){document.getElementById('accessoriesList').innerHTML='<div style="text-align:center;padding:20px;color:var(--text-secondary);font-size:14px">┘ä╪º ╪¬┘ê╪¼╪» ╪ú╪¼┘ç╪▓╪⌐ ╪Ñ╪╢╪º┘ü┘è╪⌐ ┘à╪│╪¼┘ä╪⌐</div>';return}
 document.getElementById('accessoriesList').innerHTML=accessories.map(a=>
-'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid var(--border)"><span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+(eqColors[a.type]||'#6b7280')+';margin-left:6px"></span><span style="font-weight:700">'+(a.name||'')+'</span> <span style="color:var(--text-secondary);font-size:12px;background:#f3f4f6;padding:2px 8px;border-radius:4px">'+(eqLabels[a.type]||a.type)+'</span> <span style="color:var(--text-secondary);font-size:12px">'+(a.location||'')+'</span></span>'+(curRole==='admin'?'<button style="background:none;border:1px solid #dc2626;color:#dc2626;padding:3px 8px;border-radius:6px;cursor:pointer;font-size:11px;font-family:Tajawal,sans-serif" onclick="deleteAccessory(\''+a._key+'\')">حذف</button>':'')+'</div>'
+'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid var(--border)"><span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+(eqColors[a.type]||'#6b7280')+';margin-left:6px"></span><span style="font-weight:700">'+(a.name||'')+'</span> <span style="color:var(--text-secondary);font-size:12px;background:#f3f4f6;padding:2px 8px;border-radius:4px">'+(eqLabels[a.type]||a.type)+'</span> <span style="color:var(--text-secondary);font-size:12px">'+(a.location||'')+'</span></span>'+(curRole==='admin'?'<button style="background:none;border:1px solid #dc2626;color:#dc2626;padding:3px 8px;border-radius:6px;cursor:pointer;font-size:11px;font-family:Tajawal,sans-serif" onclick="deleteAccessory(\''+a._key+'\')">╪¡╪░┘ü</button>':'')+'</div>'
 ).join('');
 }
 
-async function deleteAccessory(key){if(!confirm('حذف الجهاز؟'))return;await dbDel('accessories/'+key);loadAll();toast('تم حذف الجهاز')}
+async function deleteAccessory(key){if(!confirm('╪¡╪░┘ü ╪º┘ä╪¼┘ç╪º╪▓╪ƒ'))return;await dbDel('accessories/'+key);loadAll();toast('╪¬┘à ╪¡╪░┘ü ╪º┘ä╪¼┘ç╪º╪▓')}
 
 function renderWorks(){
 document.getElementById('workTable').innerHTML=works.map(w=>
-'<tr><td>'+(w.work_date||'')+'</td><td>'+(w.description||'')+'</td><td>'+(w.work_type||'')+'</td><td>'+(w.location||'')+'</td><td>'+(w.quantity||1)+'</td><td>'+(w.completed?'✓':'⏳')+'</td><td>'+(!w.completed?'<button class="btn btn-primary" style="padding:4px 8px;font-size:11px" onclick="completeWork(\''+w._key+'\')">إتمام</button>':'')+(curRole==='admin'?'<button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-right:4px" onclick="deleteWork(\''+w._key+'\')">حذف</button>':'')+'</td></tr>'
+'<tr><td>'+(w.work_date||'')+'</td><td>'+(w.description||'')+'</td><td>'+(w.work_type||'')+'</td><td>'+(w.location||'')+'</td><td>'+(w.quantity||1)+'</td><td>'+(w.completed?'Γ£ô':'ΓÅ│')+'</td><td>'+(!w.completed?'<button class="btn btn-primary" style="padding:4px 8px;font-size:11px" onclick="completeWork(\''+w._key+'\')">╪Ñ╪¬┘à╪º┘à</button>':'')+(curRole==='admin'?'<button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-right:4px" onclick="deleteWork(\''+w._key+'\')">╪¡╪░┘ü</button>':'')+'</td></tr>'
 ).join('');
 }
 
@@ -630,9 +643,9 @@ function renderUsers(){
 document.getElementById('usersTable').innerHTML=users.map(u=>{
 const isYousef=u.username==='yousef';
 const disabled=isYousef?'disabled style="padding:4px;border-radius:4px;font-size:12px;opacity:.6;cursor:not-allowed;background:#f3f4f6"':'style="padding:4px;border-radius:4px;font-size:12px"';
-const delBtn=isYousef?'<span title="الادمن الرئيسي محفوظ" style="color:var(--text-secondary);font-size:11px;cursor:not-allowed">🔒</span>':'<button class="btn btn-danger" style="padding:3px 8px;font-size:11px;margin-right:4px" onclick="deleteUser(\''+u._key+'\')">حذف</button>';
+const delBtn=isYousef?'<span title="╪º┘ä╪º╪»┘à┘å ╪º┘ä╪▒╪ª┘è╪│┘è ┘à╪¡┘ü┘ê╪╕" style="color:var(--text-secondary);font-size:11px;cursor:not-allowed">≡ƒöÆ</span>':'<button class="btn btn-danger" style="padding:3px 8px;font-size:11px;margin-right:4px" onclick="deleteUser(\''+u._key+'\')">╪¡╪░┘ü</button>';
 const nameStyle=isYousef?'font-weight:800;color:var(--primary)':'';
-return '<tr><td'+(nameStyle?' style="'+nameStyle+'"':'')+'>'+(isYousef?'⭐ ':'')+u.username+'</td><td>'+(u.email||'-')+'</td><td><select onchange="updateUser(\''+u._key+'\',this.value,this.dataset.field)" data-field="role" '+disabled+'><option value="admin"'+(u.role==='admin'?' selected':'')+'>admin</option><option value="user"'+(u.role==='user'?' selected':'')+'>user</option></select></td><td><select onchange="updateUser(\''+u._key+'\',this.value,this.dataset.field)" data-field="permission" '+disabled+'><option value="edit"'+(u.permission==='edit'?' selected':'')+'>edit</option><option value="can_reset"'+(u.permission==='can_reset'?' selected':'')+'>edit + تصفير</option><option value="view-only"'+(u.permission==='view-only'?' selected':'')+'>view-only</option></select></td><td>'+delBtn+'</td></tr>';
+return '<tr><td'+(nameStyle?' style="'+nameStyle+'"':'')+'>'+(isYousef?'Γ¡É ':'')+u.username+'</td><td>'+(u.email||'-')+'</td><td><select onchange="updateUser(\''+u._key+'\',this.value,this.dataset.field)" data-field="role" '+disabled+'><option value="admin"'+(u.role==='admin'?' selected':'')+'>admin</option><option value="user"'+(u.role==='user'?' selected':'')+'>user</option></select></td><td><select onchange="updateUser(\''+u._key+'\',this.value,this.dataset.field)" data-field="permission" '+disabled+'><option value="edit"'+(u.permission==='edit'?' selected':'')+'>edit</option><option value="can_reset"'+(u.permission==='can_reset'?' selected':'')+'>edit + ╪¬╪╡┘ü┘è╪▒</option><option value="view-only"'+(u.permission==='view-only'?' selected':'')+'>view-only</option></select></td><td>'+delBtn+'</td></tr>';
 }).join('');
 }
 
@@ -656,16 +669,16 @@ document.getElementById('tab-'+tab.dataset.tab).classList.add('active');
 
 function buildGeneralActions(){
 const actions=[
-{act:'add',lbl:'إضافة كاميرات',icon:'➕',hasType:true},
-{act:'send_maintenance',lbl:'إرسال للصيانة',icon:'🔧',hasType:true},
-{act:'remove',lbl:'إزالة من الخدمة',icon:'❌',hasType:true},
-{act:'return_withdrawn',lbl:'إرجاع مسحوب',icon:'📥',hasType:true},
-{act:'return_maintenance',lbl:'إرجاع من الصيانة',icon:'✅',hasType:true},
-{act:'add_switch',lbl:'إضافة SWITCH',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/><line x1="10" y1="6" x2="10.01" y2="6"/><line x1="10" y1="18" x2="10.01" y2="18"/><line x1="14" y1="6" x2="14.01" y2="6"/><line x1="14" y1="18" x2="14.01" y2="18"/><line x1="18" y1="6" x2="18.01" y2="6"/><line x1="18" y1="18" x2="18.01" y2="18"/></svg>'},
-{act:'add_nvr',lbl:'إضافة NVR',icon:'🔳'},
-{act:'add_hdd',lbl:'إضافة HARD DISK',icon:'💽'},
-{act:'add_ups',lbl:'إضافة UPS',icon:'🔋'},
-{act:'add_antenna',lbl:'إضافة ANTENNA',icon:'📡'}
+{act:'add',lbl:'╪Ñ╪╢╪º┘ü╪⌐ ┘â╪º┘à┘è╪▒╪º╪¬',icon:'Γ₧ò',hasType:true},
+{act:'send_maintenance',lbl:'╪Ñ╪▒╪│╪º┘ä ┘ä┘ä╪╡┘è╪º┘å╪⌐',icon:'≡ƒöº',hasType:true},
+{act:'remove',lbl:'╪Ñ╪▓╪º┘ä╪⌐ ┘à┘å ╪º┘ä╪«╪»┘à╪⌐',icon:'Γ¥î',hasType:true},
+{act:'return_withdrawn',lbl:'╪Ñ╪▒╪¼╪º╪╣ ┘à╪│╪¡┘ê╪¿',icon:'≡ƒôÑ',hasType:true},
+{act:'return_maintenance',lbl:'╪Ñ╪▒╪¼╪º╪╣ ┘à┘å ╪º┘ä╪╡┘è╪º┘å╪⌐',icon:'Γ£à',hasType:true},
+{act:'add_switch',lbl:'╪Ñ╪╢╪º┘ü╪⌐ SWITCH',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/><line x1="10" y1="6" x2="10.01" y2="6"/><line x1="10" y1="18" x2="10.01" y2="18"/><line x1="14" y1="6" x2="14.01" y2="6"/><line x1="14" y1="18" x2="14.01" y2="18"/><line x1="18" y1="6" x2="18.01" y2="6"/><line x1="18" y1="18" x2="18.01" y2="18"/></svg>'},
+{act:'add_nvr',lbl:'╪Ñ╪╢╪º┘ü╪⌐ NVR',icon:'≡ƒö│'},
+{act:'add_hdd',lbl:'╪Ñ╪╢╪º┘ü╪⌐ HARD DISK',icon:'≡ƒÆ╜'},
+{act:'add_ups',lbl:'╪Ñ╪╢╪º┘ü╪⌐ UPS',icon:'≡ƒöï'},
+{act:'add_antenna',lbl:'╪Ñ╪╢╪º┘ü╪⌐ ANTENNA',icon:'≡ƒôí'}
 ];
 document.getElementById('generalActions').innerHTML=actions.map(a=>
 '<div class="action-btn" onclick="openActionModal(\''+a.act+'\',\''+a.lbl+'\','+(a.hasType?'true':'false')+')"><span style="font-size:24px">'+a.icon+'</span>'+a.lbl+'</div>'
@@ -674,9 +687,9 @@ document.getElementById('generalActions').innerHTML=actions.map(a=>
 
 function buildTypeActions(){
 const actions=[
-{act:'add_withdraw',lbl:'سحب كاميرات',icon:'📤'},
-{act:'eq_add_withdraw',lbl:'سحب أجهزة',icon:'📦'},
-{act:'add_antenna_withdraw',lbl:'سحب ANTENNA',icon:'📡'}
+{act:'add_withdraw',lbl:'╪│╪¡╪¿ ┘â╪º┘à┘è╪▒╪º╪¬',icon:'≡ƒôñ'},
+{act:'eq_add_withdraw',lbl:'╪│╪¡╪¿ ╪ú╪¼┘ç╪▓╪⌐',icon:'≡ƒôª'},
+{act:'add_antenna_withdraw',lbl:'╪│╪¡╪¿ ANTENNA',icon:'≡ƒôí'}
 ];
 document.getElementById('typeActions').innerHTML=actions.map(a=>
 '<div class="action-btn" onclick="openActionModal(\''+a.act+'\',\''+a.lbl+'\',true)"><span style="font-size:24px">'+a.icon+'</span>'+a.lbl+'</div>'
@@ -703,20 +716,20 @@ if(isAntennaAdd){document.getElementById('typeSelectGroup').style.display='block
 const sel=document.getElementById('actionTypeSelect');
 const lbl=document.querySelector('#typeSelectGroup label');
 if(isEqWithdraw){
-lbl.textContent='نوع الجهاز';
-sel.innerHTML='<option value="">كافة الأنواع</option><option value="switch">SWITCH</option><option value="nvr">NVR</option><option value="hdd">HARD DISK</option><option value="ups">UPS</option>';
+lbl.textContent='┘å┘ê╪╣ ╪º┘ä╪¼┘ç╪º╪▓';
+sel.innerHTML='<option value="">┘â╪º┘ü╪⌐ ╪º┘ä╪ú┘å┘ê╪º╪╣</option><option value="switch">SWITCH</option><option value="nvr">NVR</option><option value="hdd">HARD DISK</option><option value="ups">UPS</option>';
 }else if(isAntennaAdd){
-lbl.textContent='نوع الـ ANTENNA';
-sel.innerHTML='<option value="">كافة الأنواع</option><option value="rocket_m5">ROCKET M5</option><option value="lightbeam_ac">LIGHTBEAM AC</option><option value="power_beam">POWER BEAM</option>';
+lbl.textContent='┘å┘ê╪╣ ╪º┘ä┘Ç ANTENNA';
+sel.innerHTML='<option value="">┘â╪º┘ü╪⌐ ╪º┘ä╪ú┘å┘ê╪º╪╣</option><option value="rocket_m5">ROCKET M5</option><option value="lightbeam_ac">LIGHTBEAM AC</option><option value="power_beam">POWER BEAM</option>';
 }else if(type==='add_antenna_withdraw'){
-lbl.textContent='نوع الـ ANTENNA';
-sel.innerHTML='<option value="">كافة الأنواع</option><option value="rocket_m5">ROCKET M5</option><option value="lightbeam_ac">LIGHTBEAM AC</option><option value="power_beam">POWER BEAM</option>';
+lbl.textContent='┘å┘ê╪╣ ╪º┘ä┘Ç ANTENNA';
+sel.innerHTML='<option value="">┘â╪º┘ü╪⌐ ╪º┘ä╪ú┘å┘ê╪º╪╣</option><option value="rocket_m5">ROCKET M5</option><option value="lightbeam_ac">LIGHTBEAM AC</option><option value="power_beam">POWER BEAM</option>';
 }else if(isAdd){
-lbl.textContent='نوع الكاميرا';
-sel.innerHTML='<option value="">كافة الأنواع</option><option value="bullet">BULLET</option><option value="ptz">PTZ</option><option value="panvu">PANVU</option><option value="tandum">TANDUM</option><option value="moto">MOTO</option><option value="dome">DOME</option><option value="anti_corrosion">ANTI CORUSION</option><option value="fingerprints">البصمات</option><option value="gates">البوابات</option>';
+lbl.textContent='┘å┘ê╪╣ ╪º┘ä┘â╪º┘à┘è╪▒╪º';
+sel.innerHTML='<option value="">┘â╪º┘ü╪⌐ ╪º┘ä╪ú┘å┘ê╪º╪╣</option><option value="bullet">BULLET</option><option value="ptz">PTZ</option><option value="panvu">PANVU</option><option value="tandum">TANDUM</option><option value="moto">MOTO</option><option value="dome">DOME</option><option value="anti_corrosion">ANTI CORUSION</option><option value="fingerprints">╪º┘ä╪¿╪╡┘à╪º╪¬</option><option value="gates">╪º┘ä╪¿┘ê╪º╪¿╪º╪¬</option>';
 }else{
-lbl.textContent='نوع الكاميرا';
-sel.innerHTML='<option value="">كافة الأنواع</option><option value="bullet">BULLET</option><option value="ptz">PTZ</option><option value="panvu">PANVU</option><option value="tandum">TANDUM</option><option value="moto">MOTO</option><option value="dome">DOME</option><option value="anti_corrosion">ANTI CORUSION</option><option value="fingerprints">البصمات</option><option value="gates">البوابات</option>';
+lbl.textContent='┘å┘ê╪╣ ╪º┘ä┘â╪º┘à┘è╪▒╪º';
+sel.innerHTML='<option value="">┘â╪º┘ü╪⌐ ╪º┘ä╪ú┘å┘ê╪º╪╣</option><option value="bullet">BULLET</option><option value="ptz">PTZ</option><option value="panvu">PANVU</option><option value="tandum">TANDUM</option><option value="moto">MOTO</option><option value="dome">DOME</option><option value="anti_corrosion">ANTI CORUSION</option><option value="fingerprints">╪º┘ä╪¿╪╡┘à╪º╪¬</option><option value="gates">╪º┘ä╪¿┘ê╪º╪¿╪º╪¬</option>';
 }
 document.getElementById('actionModal').classList.add('active');
 }
@@ -737,11 +750,11 @@ const mac=document.getElementById('camMAC').value.trim();
 const type=document.getElementById('camType').value;
 const loc=document.getElementById('camLocation').value;
 const status=document.getElementById('camStatus').value;
-if(!name){toast('أدخل اسم الكاميرا','error');return}
+if(!name){toast('╪ú╪»╪«┘ä ╪º╪│┘à ╪º┘ä┘â╪º┘à┘è╪▒╪º','error');return}
 const now=new Date();
 await dbPush('cameras',{name:name,mac:mac,type:type,location:loc,status:status,date:now.toLocaleDateString('en-GB'),username:curUser});
 if(status==='warehouse'){let s={...state};s.warehouse=(s.warehouse||0)+1;s.total=(s.total||0)+1;if(s[type]!==undefined)s[type]=(s[type]||0)+1;await dbSet('system_state',s);state=s;}
-closeModal('addCameraModal');loadAll();toast('تم إضافة الكاميرا');
+closeModal('addCameraModal');loadAll();toast('╪¬┘à ╪Ñ╪╢╪º┘ü╪⌐ ╪º┘ä┘â╪º┘à┘è╪▒╪º');
 }
 
 async function editCamera(key){
@@ -763,14 +776,14 @@ const mac=document.getElementById('editCamMAC').value.trim();
 const type=document.getElementById('editCamType').value;
 const loc=document.getElementById('editCamLocation').value;
 const status=document.getElementById('editCamStatus').value;
-if(!name){toast('أدخل اسم الكاميرا','error');return}
+if(!name){toast('╪ú╪»╪«┘ä ╪º╪│┘à ╪º┘ä┘â╪º┘à┘è╪▒╪º','error');return}
 await dbSet('cameras/'+key,{name:name,mac:mac,type:type,location:loc,status:status,date:cameras.find(c=>c._key===key).date||'',username:curUser});
-closeModal('editCameraModal');loadAll();toast('تم تحديث الكاميرا');
+closeModal('editCameraModal');loadAll();toast('╪¬┘à ╪¬╪¡╪»┘è╪½ ╪º┘ä┘â╪º┘à┘è╪▒╪º');
 }
 
 async function deleteCamera(key){
-if(!confirm('حذف الكاميرا؟'))return;
-await dbDel('cameras/'+key);loadAll();toast('تم حذف الكاميرا');
+if(!confirm('╪¡╪░┘ü ╪º┘ä┘â╪º┘à┘è╪▒╪º╪ƒ'))return;
+await dbDel('cameras/'+key);loadAll();toast('╪¬┘à ╪¡╪░┘ü ╪º┘ä┘â╪º┘à┘è╪▒╪º');
 }
 
 async function submitAction(){
@@ -779,7 +792,7 @@ const loc=document.getElementById('actionLocation').value;
 const selType=document.getElementById('actionTypeSelect').value;
 const ip=document.getElementById('actionIP').value.trim();
 const mac=document.getElementById('actionMAC').value.trim();
-if(!qty||qty<1){toast('أدخل كمية صحيحة','error');return}
+if(!qty||qty<1){toast('╪ú╪»╪«┘ä ┘â┘à┘è╪⌐ ╪╡╪¡┘è╪¡╪⌐','error');return}
 let s={...state};
 let logLabel=actionTitle;
 
@@ -819,11 +832,11 @@ for(const c of toUpdate){await dbSet('cameras/'+c._key,{...c,status:'warehouse',
 else if(actionType==='add_withdraw'){
 if(selType){
 s.total=(s.total||0)+qty;s.warehouse=(s.warehouse||0)+qty;s[selType]=(s[selType]||0)+qty;
-logLabel='إضافة '+selType.toUpperCase();
+logLabel='╪Ñ╪╢╪º┘ü╪⌐ '+selType.toUpperCase();
 for(let i=0;i<qty;i++){await dbPush('cameras',{name:selType+' '+(s.total-i),ip:ip||'',type:selType,location:loc,status:'warehouse',date:new Date().toLocaleDateString('en-GB'),username:curUser})}
 }else{
 s.total=Math.max(0,(s.total||0)-qty);s.warehouse=Math.max(0,s.warehouse-qty);
-logLabel='سحب عامة';
+logLabel='╪│╪¡╪¿ ╪╣╪º┘à╪⌐';
 }
 }
 else if(actionType==='add_switch'||actionType==='add_nvr'||actionType==='add_hdd'||actionType==='add_ups'||actionType==='add_antenna'){
@@ -832,14 +845,14 @@ if(actionType==='add_antenna'){
 const eqName=selType?(antennaNames[selType]||selType.toUpperCase()):'ANTENNA';
 const eqKey=selType||'antenna';
 s['eq_'+eqKey]=(s['eq_'+eqKey]||0)+qty;s.eq_total=(s.eq_total||0)+qty;
-logLabel='إضافة '+eqName;
+logLabel='╪Ñ╪╢╪º┘ü╪⌐ '+eqName;
 for(let i=0;i<qty;i++){await dbPush('accessories',{name:eqName+' '+(i+1),type:eqKey,location:loc,ip:ip||'',status:'warehouse',date:new Date().toLocaleDateString('en-GB'),username:curUser})}
 }else{
 const eqNames={add_switch:'SWITCH',add_nvr:'NVR',add_hdd:'HARD DISK',add_ups:'UPS'};
 const eqName=eqNames[actionType];
 s['eq_'+eqName.toLowerCase()]=(s['eq_'+eqName.toLowerCase()]||0)+qty;
 s.eq_total=(s.eq_total||0)+qty;
-logLabel='إضافة '+eqName;
+logLabel='╪Ñ╪╢╪º┘ü╪⌐ '+eqName;
 for(let i=0;i<qty;i++){await dbPush('accessories',{name:eqName+' '+(i+1),type:eqName.toLowerCase(),location:loc,ip:ip||'',status:'warehouse',date:new Date().toLocaleDateString('en-GB'),username:curUser})}
 }
 }
@@ -849,13 +862,13 @@ const eqNames={switch:'SWITCH',nvr:'NVR',hdd:'HARD DISK',ups:'UPS'};
 if(selType&&eqTypes.includes(selType)){
 const eqKey=selType;const eqName=eqNames[eqKey];
 s['eq_'+eqKey]=(s['eq_'+eqKey]||0)+qty;s.eq_total=(s.eq_total||0)+qty;
-logLabel='إضافة '+eqName;
+logLabel='╪Ñ╪╢╪º┘ü╪⌐ '+eqName;
 for(let i=0;i<qty;i++){await dbPush('accessories',{name:eqName+' '+(i+1),type:eqKey,location:loc,ip:ip||'',status:'warehouse',date:new Date().toLocaleDateString('en-GB'),username:curUser})}
 }else if(!selType){
 const toUpdate=accessories.filter(a=>a.status==='warehouse').slice(0,qty);
 for(const a of toUpdate){await dbDel('accessories/'+a._key)}
 s.eq_total=Math.max(0,(s.eq_total||0)-qty);
-logLabel='سحب أجهزة عامة';
+logLabel='╪│╪¡╪¿ ╪ú╪¼┘ç╪▓╪⌐ ╪╣╪º┘à╪⌐';
 }
 }
 else if(actionType==='add_antenna_withdraw'){
@@ -864,28 +877,28 @@ const antTypes=['rocket_m5','lightbeam_ac','power_beam'];
 if(selType&&antTypes.includes(selType)){
 const antName=antennaNames[selType];
 s['eq_'+selType]=(s['eq_'+selType]||0)+qty;s.eq_total=(s.eq_total||0)+qty;
-logLabel='إضافة '+antName;
+logLabel='╪Ñ╪╢╪º┘ü╪⌐ '+antName;
 for(let i=0;i<qty;i++){await dbPush('accessories',{name:antName+' '+(i+1),type:selType,location:loc,ip:ip||'',status:'warehouse',date:new Date().toLocaleDateString('en-GB'),username:curUser})}
 }else if(!selType){
 const toUpdate=accessories.filter(a=>antTypes.includes(a.type)&&a.status==='warehouse').slice(0,qty);
 for(const a of toUpdate){await dbDel('accessories/'+a._key)}
 s.eq_total=Math.max(0,(s.eq_total||0)-qty);
-logLabel='سحب ANTENNA';
+logLabel='╪│╪¡╪¿ ANTENNA';
 }
 }
 await dbSet('system_state',s);
 const now=new Date();
 await dbPush('logs',{operation:logLabel,quantity:qty,ip:ip||'',location:loc,username:curUser,op_date:now.toLocaleDateString('en-GB'),op_time:now.toLocaleTimeString('en-GB')});
-closeModal('actionModal');state=s;renderAll();toast('تم تنفيذ العملية بنجاح');
+closeModal('actionModal');state=s;renderAll();toast('╪¬┘à ╪¬┘å┘ü┘è╪░ ╪º┘ä╪╣┘à┘ä┘è╪⌐ ╪¿┘å╪¼╪º╪¡');
 }
 
 async function addLocation(){
 const name=document.getElementById('newLocationInput').value.trim();
-if(!name){toast('أدخل اسم الموقع','error');return}
+if(!name){toast('╪ú╪»╪«┘ä ╪º╪│┘à ╪º┘ä┘à┘ê┘é╪╣','error');return}
 await dbPush('locations',{name:name,withdrawn_count:0});
-document.getElementById('newLocationInput').value='';loadAll();toast('تم إضافة الموقع');
+document.getElementById('newLocationInput').value='';loadAll();toast('╪¬┘à ╪Ñ╪╢╪º┘ü╪⌐ ╪º┘ä┘à┘ê┘é╪╣');
 }
-async function deleteLocation(key,name){if(!confirm('حذف '+name+'؟'))return;await dbDel('locations/'+key);loadAll()}
+async function deleteLocation(key,name){if(!confirm('╪¡╪░┘ü '+name+'╪ƒ'))return;await dbDel('locations/'+key);loadAll()}
 
 function openWorkModal(){
 document.getElementById('workDesc').value='';document.getElementById('workQty').value=1;
@@ -897,20 +910,20 @@ const desc=document.getElementById('workDesc').value.trim();
 const type=document.getElementById('workType').value;
 const loc=document.getElementById('workLocation').value;
 const qty=parseInt(document.getElementById('workQty').value)||1;
-if(!desc){toast('أدخل الوصف','error');return}
+if(!desc){toast('╪ú╪»╪«┘ä ╪º┘ä┘ê╪╡┘ü','error');return}
 const now=new Date();
 await dbPush('works',{description:desc,work_type:type,location:loc,quantity:qty,completed:false,username:curUser,work_date:now.toLocaleDateString('en-GB'),work_time:now.toLocaleTimeString('en-GB')});
-closeModal('workModal');loadAll();toast('تم إضافة العمل');
+closeModal('workModal');loadAll();toast('╪¬┘à ╪Ñ╪╢╪º┘ü╪⌐ ╪º┘ä╪╣┘à┘ä');
 }
-async function completeWork(key){const w=await dbGet('works/'+key);w.completed=true;await dbSet('works/'+key,w);loadAll();toast('تم الإتمام')}
-async function deleteWork(key){if(!confirm('حذف العمل؟'))return;await dbDel('works/'+key);loadAll()}
-async function updateUser(key,value,field){const u=await dbGet('users/'+key);if(u.username==='yousef'){toast('لا يمكن تعديل الأدمن الرئيسي','error');return}u[field]=value;await dbSet('users/'+key,u);loadAll();toast('تم التحديث')}
+async function completeWork(key){const w=await dbGet('works/'+key);w.completed=true;await dbSet('works/'+key,w);loadAll();toast('╪¬┘à ╪º┘ä╪Ñ╪¬┘à╪º┘à')}
+async function deleteWork(key){if(!confirm('╪¡╪░┘ü ╪º┘ä╪╣┘à┘ä╪ƒ'))return;await dbDel('works/'+key);loadAll()}
+async function updateUser(key,value,field){const u=await dbGet('users/'+key);if(u.username==='yousef'){toast('┘ä╪º ┘è┘à┘â┘å ╪¬╪╣╪»┘è┘ä ╪º┘ä╪ú╪»┘à┘å ╪º┘ä╪▒╪ª┘è╪│┘è','error');return}u[field]=value;await dbSet('users/'+key,u);loadAll();toast('╪¬┘à ╪º┘ä╪¬╪¡╪»┘è╪½')}
 async function deleteUser(key){
 const u=users.find(x=>x._key===key);
 if(!u)return;
-if(u.username==='yousef'){toast('لا يمكن حذف هذا المستخدم','error');return}
-if(!confirm('حذف المستخدم "'+u.username+'"؟'))return;
-await dbDel('users/'+key);loadAll();toast('تم حذف المستخدم');
+if(u.username==='yousef'){toast('┘ä╪º ┘è┘à┘â┘å ╪¡╪░┘ü ┘ç╪░╪º ╪º┘ä┘à╪│╪¬╪«╪»┘à','error');return}
+if(!confirm('╪¡╪░┘ü ╪º┘ä┘à╪│╪¬╪«╪»┘à "'+u.username+'"╪ƒ'))return;
+await dbDel('users/'+key);loadAll();toast('╪¬┘à ╪¡╪░┘ü ╪º┘ä┘à╪│╪¬╪«╪»┘à');
 }
 
 function toast(msg,type='success'){
@@ -921,9 +934,9 @@ document.body.appendChild(t);setTimeout(()=>t.remove(),3000);
 }
 
 async function confirmReset(){
-const ok=confirm('⚠️ تحذير: سيتم تصفير جميع عدادات الكاميرات!\n\nهل أنت متأكد؟');
+const ok=confirm('ΓÜá∩╕Å ╪¬╪¡╪░┘è╪▒: ╪│┘è╪¬┘à ╪¬╪╡┘ü┘è╪▒ ╪¼┘à┘è╪╣ ╪╣╪»╪º╪»╪º╪¬ ╪º┘ä┘â╪º┘à┘è╪▒╪º╪¬!\n\n┘ç┘ä ╪ú┘å╪¬ ┘à╪¬╪ú┘â╪»╪ƒ');
 if(!ok)return;
-const ok2=confirm('تأكيد أخير: هل تريد تصفير كل شيء؟');
+const ok2=confirm('╪¬╪ú┘â┘è╪» ╪ú╪«┘è╪▒: ┘ç┘ä ╪¬╪▒┘è╪» ╪¬╪╡┘ü┘è╪▒ ┘â┘ä ╪┤┘è╪í╪ƒ');
 if(!ok2)return;
 await dbSet('system_state',{total:0,warehouse:0,deployed:0,maintenance:0,out_of_service:0,fingerprints:0,gates:0,bullet:0,ptz:0,panvu:0,tandum:0,moto:0,dome:0,anti_corrosion:0});
 await dbSet('logs',null);
@@ -933,7 +946,7 @@ await dbSet('cameras',null);
 state=await dbGet('system_state');
 locations=[];logs=[];works=[];cameras=[];
 renderAll();
-toast('تم تصفير جميع العدادات بنجاح');
+toast('╪¬┘à ╪¬╪╡┘ü┘è╪▒ ╪¼┘à┘è╪╣ ╪º┘ä╪╣╪»╪º╪»╪º╪¬ ╪¿┘å╪¼╪º╪¡');
 }
 
 function showResetSection(){
@@ -946,23 +959,23 @@ let reportData=[];
 function pullReport(){
 const type=document.getElementById('reportType').value;
 const dateVal=document.getElementById('reportDate').value;
-if(!dateVal){toast('اختر التاريخ','error');return}
+if(!dateVal){toast('╪º╪«╪¬╪▒ ╪º┘ä╪¬╪º╪▒┘è╪«','error');return}
 const d=new Date(dateVal);
 reportData=[];
 let title='';
 let heads='';
 
 if(type==='daily'){
-title='التقرير اليومي — '+dateVal;
-heads='<th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th><th>الوقت</th>';
+title='╪º┘ä╪¬┘é╪▒┘è╪▒ ╪º┘ä┘è┘ê┘à┘è ΓÇö '+dateVal;
+heads='<th>╪º┘ä╪╣┘à┘ä┘è╪⌐</th><th>╪º┘ä┘â┘à┘è╪⌐</th><th>IP Address</th><th>╪º┘ä┘à┘ê┘é╪╣</th><th>╪º┘ä┘ê┘é╪¬</th>';
 const dateStr=d.toLocaleDateString('en-GB');
 logs.forEach(l=>{if(l.op_date===dateStr)reportData.push([l.operation||'',l.quantity||0,l.ip||'',l.location||'',l.op_time||''])});
 }
 else if(type==='weekly'){
 const start=new Date(d);start.setDate(start.getDate()-6);
 const end=new Date(d);
-title='التقرير الأسبوعي — '+start.toLocaleDateString('en-GB')+' إلى '+end.toLocaleDateString('en-GB');
-heads='<th>التاريخ</th><th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th>';
+title='╪º┘ä╪¬┘é╪▒┘è╪▒ ╪º┘ä╪ú╪│╪¿┘ê╪╣┘è ΓÇö '+start.toLocaleDateString('en-GB')+' ╪Ñ┘ä┘ë '+end.toLocaleDateString('en-GB');
+heads='<th>╪º┘ä╪¬╪º╪▒┘è╪«</th><th>╪º┘ä╪╣┘à┘ä┘è╪⌐</th><th>╪º┘ä┘â┘à┘è╪⌐</th><th>IP Address</th><th>╪º┘ä┘à┘ê┘é╪╣</th>';
 logs.forEach(l=>{
 if(!l.op_date)return;
 const parts=l.op_date.split('/');
@@ -973,8 +986,8 @@ if(ld>=start&&ld<=end)reportData.push([l.op_date,l.operation||'',l.quantity||0,l
 else if(type==='monthly'){
 const month=d.getMonth()+1;
 const year=d.getFullYear();
-title='التقرير الشهري — '+year+'/'+String(month).padStart(2,'0');
-heads='<th>التاريخ</th><th>العملية</th><th>الكمية</th><th>IP Address</th><th>الموقع</th>';
+title='╪º┘ä╪¬┘é╪▒┘è╪▒ ╪º┘ä╪┤┘ç╪▒┘è ΓÇö '+year+'/'+String(month).padStart(2,'0');
+heads='<th>╪º┘ä╪¬╪º╪▒┘è╪«</th><th>╪º┘ä╪╣┘à┘ä┘è╪⌐</th><th>╪º┘ä┘â┘à┘è╪⌐</th><th>IP Address</th><th>╪º┘ä┘à┘ê┘é╪╣</th>';
 logs.forEach(l=>{
 if(!l.op_date)return;
 const parts=l.op_date.split('/');
