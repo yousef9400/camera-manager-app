@@ -116,8 +116,8 @@ tr:hover td{background:#f8fafc}
 <div class="form-group"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="كلمة المرور" onkeydown="if(event.key==='Enter')doLogin()"></div>
 <button class="btn btn-primary" onclick="doLogin()">دخول</button>
 <div style="margin-top:12px;display:flex;justify-content:space-between;font-size:13px">
-<a href="#" onclick="showForgot()" style="color:var(--primary);text-decoration:none">نسيت كلمة المرور؟</a>
-<a href="#" onclick="showRegister()" style="color:var(--primary);text-decoration:none">حساب جديد</a>
+<button type="button" onclick="showForgot()" style="background:none;border:none;color:var(--primary);cursor:pointer;font-family:'Tajawal',sans-serif;font-weight:700;font-size:13px;padding:0">نسيت كلمة المرور؟</button>
+<button type="button" onclick="showRegister()" style="background:none;border:none;color:var(--primary);cursor:pointer;font-family:'Tajawal',sans-serif;font-weight:700;font-size:13px;padding:0">حساب جديد</button>
 </div>
 <div id="loginErr" class="login-error"></div>
 </div>
@@ -436,8 +436,8 @@ let actionType='',actionTitle='';
 let curUser='',curRole='user',curPerm='edit';
 
 async function dbGet(p){try{const r=await fetch(DB_URL+p+'.json');if(!r.ok)throw new Error(r.status);const d=await r.json();return d}catch(e){console.error('dbGet error:',p,e);return null}}
-async function dbSet(p,d){try{await fetch(DB_URL+p+'.json',{method:'PUT',body:JSON.stringify(d)})}catch(e){console.error('dbSet error:',p,e)}}
-async function dbPush(p,d){try{const r=await fetch(DB_URL+p+'.json',{method:'POST',body:JSON.stringify(d)});return await r.json()}catch(e){console.error('dbPush error:',p,e);return null}}
+async function dbSet(p,d){try{await fetch(DB_URL+p+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})}catch(e){console.error('dbSet error:',p,e)}}
+async function dbPush(p,d){try{const r=await fetch(DB_URL+p+'.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});return await r.json()}catch(e){console.error('dbPush error:',p,e);return null}}
 async function dbDel(p){try{await fetch(DB_URL+p+'.json',{method:'DELETE'})}catch(e){console.error('dbDel error:',p,e)}}
 
 const camTypes=[
@@ -520,7 +520,7 @@ if(exists){er.style.display='block';er.textContent='اسم المستخدم مو
 await dbPush('users',{username:un,password:pw,email:email,role:'user',permission:'edit'});
 closeModal('registerModal');
 er.style.display='none';
-alert('تم التسجيل بنجاح! سجّل دخول الحين');
+toast('تم التسجيل بنجاح! سجّل دخول الحين');
 document.getElementById('loginUser').value=un;
 }
 
@@ -541,7 +541,7 @@ u.password=newPass;
 await dbSet('users/'+foundKey,u);
 closeModal('forgotModal');
 er.style.display='none';
-alert('تم تغيير كلمة المرور بنجاح! سجّل دخول الحين');
+toast('تم تغيير كلمة المرور بنجاح! سجّل دخول الحين');
 }
 
 async function loadAll(){
