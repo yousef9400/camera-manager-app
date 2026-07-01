@@ -689,8 +689,10 @@ async function deleteAccessory(key){if(!confirm('حذف الجهاز؟'))return;
 function renderWorks(){
 document.getElementById('workTable').innerHTML=works.map(w=>{
 const isDone=w.completed;
-const statusBtn=isDone?'<span style="display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;background:#d1fae5;color:#065f46;cursor:pointer" onclick="toggleWork(\''+w._key+'\',false)">✓ مكتملة</span>':'<span style="display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;background:#fef3c7;color:#92400e;cursor:pointer" onclick="toggleWork(\''+w._key+'\',true)">⏳ تحت الإجراء</span>';
-return '<tr'+(isDone?' style="opacity:.6"':'')+'><td>'+(w.work_date||'')+'</td><td style="'+(isDone?'text-decoration:line-through':'')+'">'+(w.description||'')+'</td><td>'+(w.work_type||'')+'</td><td>'+(w.location||'')+'</td><td>'+(w.quantity||1)+'</td><td>'+statusBtn+'</td><td>'+(curRole==='admin'?'<button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-right:4px" onclick="deleteWork(\''+w._key+'\')">حذف</button>':'')+'</td></tr>';
+const statusBtn=isDone
+?'<label style="display:flex;align-items:center;gap:6px;cursor:pointer;justify-content:center"><input type="checkbox" checked onchange="toggleWork(\''+w._key+'\',false)" style="width:18px;height:18px;accent-color:#059669;cursor:pointer"><span style="font-size:11px;font-weight:700;color:#059669">مكتملة</span></label>'
+:'<label style="display:flex;align-items:center;gap:6px;cursor:pointer;justify-content:center"><input type="checkbox" onchange="toggleWork(\''+w._key+'\',true)" style="width:18px;height:18px;accent-color:#d97706;cursor:pointer"><span style="font-size:11px;font-weight:700;color:#92400e">تحت الإجراء</span></label>';
+return '<tr'+(isDone?' style="background:#f0fdf4"':'')+'><td>'+(w.work_date||'')+'</td><td style="'+(isDone?'text-decoration:line-through;color:var(--text-secondary)':'')+'">'+(w.description||'')+'</td><td>'+(w.work_type||'')+'</td><td>'+(w.location||'')+'</td><td>'+(w.quantity||1)+'</td><td>'+statusBtn+'</td><td>'+(curRole==='admin'?'<button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-right:4px" onclick="deleteWork(\''+w._key+'\')">حذف</button>':'')+'</td></tr>';
 }).join('');
 }
 
