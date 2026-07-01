@@ -153,7 +153,7 @@ tr:hover td{background:#f8fafc}
 <div class="stats-grid" id="statsGrid"></div>
 <div class="card">
 <h3>الأعمال الجارية</h3>
-<div id="dashboardWorks" style="max-height:200px;overflow:auto"></div>
+<div id="dashboardWorks" style="max-height:350px;overflow:auto"></div>
 </div>
 <div class="card">
 <h3>أنواع الكاميرات</h3>
@@ -755,13 +755,14 @@ ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+(pct/100)*Math.PI*2);ctx.s
 
 function renderDashboardWorks(){
 const el=document.getElementById('dashboardWorks');
-if(!works.length){el.innerHTML='<div style="text-align:center;padding:16px;color:var(--text-secondary);font-size:13px">لا توجد أعمال جارية</div>';return}
+if(!works.length){el.innerHTML='<div style="text-align:center;padding:20px;color:var(--text-secondary);font-size:15px">لا توجد أعمال جارية</div>';return}
 el.innerHTML=works.map(w=>{
 const icon=w.completed?'✓':'⏳';
 const color=w.completed?'#059669':'#d97706';
 const bg=w.completed?'#d1fae5':'#fef3c7';
-const textDecoration=w.completed?'text-decoration:line-through;opacity:.6':'';
-return '<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-bottom:1px solid var(--border);'+textDecoration+'"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:'+bg+';color:'+color+';font-size:11px;font-weight:700;flex-shrink:0">'+icon+'</span><span style="font-size:13px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(w.description||'بدون وصف')+'</span><span style="font-size:11px;color:var(--text-secondary);flex-shrink:0">'+(w.location||'')+'</span></div>';
+const statusText=w.completed?'مكتملة':'تحت الإجراء';
+const textDecoration=w.completed?'text-decoration:line-through;opacity:.55':'';
+return '<div style="display:flex;align-items:center;gap:12px;padding:14px 12px;border-bottom:1px solid var(--border);'+textDecoration+'border-radius:8px;margin-bottom:4px;transition:background .2s" onmouseover="this.style.background=\'#f9fafb\'" onmouseout="this.style.background=\'transparent\'"><span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:'+bg+';color:'+color+';font-size:16px;font-weight:700;flex-shrink:0">'+icon+'</span><div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(w.description||'بدون وصف')+'</div><div style="font-size:13px;color:var(--text-secondary);margin-top:2px">'+(w.work_date||'')+(w.location?' · '+w.location:'')+'</div></div><span style="font-size:12px;font-weight:700;color:'+color+';background:'+bg+';padding:4px 10px;border-radius:20px;flex-shrink:0">'+statusText+'</span></div>';
 }).join('');
 }
 
