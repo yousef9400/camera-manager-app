@@ -609,13 +609,13 @@ toast('تم تغيير كلمة المرور بنجاح');
 }
 
 async function loadAll(){
-state=await dbGet('system_state')||{total:0,warehouse:0,deployed:0,maintenance:0,out_of_service:0,fingerprints:0,gates:0,bullet:0,ptz:0,panvu:0,tandum:0,moto:0,dome:0,anti_corrosion:0};
-locations=[];const ld=await dbGet('locations');if(ld)Object.entries(ld).forEach(([k,v])=>{locations.push({...v,_key:k})});
-logs=[];const lg=await dbGet('logs');if(lg)Object.entries(lg).forEach(([k,v])=>{logs.push({...v,_key:k})});
-works=[];const wk=await dbGet('works');if(wk)Object.entries(wk).forEach(([k,v])=>{works.push({...v,_key:k})});
-users=[];const us=await dbGet('users');if(us)Object.entries(us).forEach(([k,v])=>{users.push({...v,_key:k})});
-cameras=[];const cm=await dbGet('cameras');if(cm)Object.entries(cm).forEach(([k,v])=>{cameras.push({...v,_key:k})});
-accessories=[];const ac=await dbGet('accessories');if(ac)Object.entries(ac).forEach(([k,v])=>{accessories.push({...v,_key:k})});
+const s=await dbGet('system_state');if(s)state=s;
+const ld=await dbGet('locations');locations=[];if(ld)Object.entries(ld).forEach(([k,v])=>{locations.push({...v,_key:k})});
+const lg=await dbGet('logs');logs=[];if(lg)Object.entries(lg).forEach(([k,v])=>{logs.push({...v,_key:k})});
+const wk=await dbGet('works');works=[];if(wk)Object.entries(wk).forEach(([k,v])=>{works.push({...v,_key:k})});
+const us=await dbGet('users');users=[];if(us)Object.entries(us).forEach(([k,v])=>{users.push({...v,_key:k})});
+const cm=await dbGet('cameras');cameras=[];if(cm)Object.entries(cm).forEach(([k,v])=>{cameras.push({...v,_key:k})});
+const ac=await dbGet('accessories');accessories=[];if(ac)Object.entries(ac).forEach(([k,v])=>{accessories.push({...v,_key:k})});
 renderAll();
 }
 
