@@ -152,23 +152,16 @@ tr:hover td{background:#f8fafc}
 <div id="tab-dashboard" class="tab-content active">
 <div class="stats-grid" id="statsGrid"></div>
 <div class="card">
-<h3>نسبة التشغيل</h3>
-<div style="display:flex;align-items:center;justify-content:center;padding:16px 0">
-<div class="donut-container" style="width:140px;height:140px">
-<canvas id="donutCanvas" width="140" height="140"></canvas>
-<div class="donut-center">
-<div class="pct" id="donutPct" style="font-size:24px">0%</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
 <h3>الأعمال الجارية</h3>
 <div id="dashboardWorks" style="max-height:200px;overflow:auto"></div>
 </div>
 <div class="card">
 <h3>أنواع الكاميرات</h3>
 <div class="types-grid" id="typesGrid"></div>
+</div>
+<div class="card">
+<h3>الأجهزة الإضافية</h3>
+<div class="types-grid" id="equipGrid"></div>
 </div>
 </div>
 
@@ -620,7 +613,7 @@ renderAll();
 }
 
 function renderAll(){
-renderStats();renderTypes();renderLogs();renderLocations();renderAccessories();renderWorks();renderUsers();renderCameras();renderDashboardWorks();
+renderStats();renderTypes();renderEquip();renderLogs();renderLocations();renderAccessories();renderWorks();renderUsers();renderCameras();renderDashboardWorks();
 }
 
 function renderStats(){
@@ -634,15 +627,24 @@ const items=[
 document.getElementById('statsGrid').innerHTML=items.map(i=>
 '<div class="stat-card" style="cursor:pointer" onclick="this.style.transform=\'scale(0.95)\';setTimeout(()=>this.style.transform=\'\',150)"><div class="stat-icon" style="background:'+i.bg+'">'+i.i+'</div><div class="stat-value" style="color:'+i.c+'">'+i.v+'</div><div class="stat-label">'+i.l+'</div></div>'
 ).join('');
-const t=s.total||1;
-const dp=Math.round(((s.deployed||0)/t)*100);
-document.getElementById('donutPct').textContent=dp+'%';
-drawDonut(dp);
 }
 
 function renderTypes(){
 document.getElementById('typesGrid').innerHTML=camTypes.map(t=>
 '<div class="type-card"><div class="type-icon-wrap" style="background:'+t.color+'15;color:'+t.color+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="30" height="30"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="type-value" style="color:'+t.color+'">'+(state[t.key]||0)+'</div><div class="type-label">'+t.label+'</div></div>'
+).join('');
+}
+
+function renderEquip(){
+const equipTypes=[
+{key:'switch',label:'SWITCH',color:'#2563eb'},
+{key:'nvr',label:'NVR',color:'#7c3aed'},
+{key:'hdd',label:'HARD DISK',color:'#059669'},
+{key:'ups',label:'UPS',color:'#d97706'},
+{key:'antenna',label:'ANTENNA',color:'#e11d48'}
+];
+document.getElementById('equipGrid').innerHTML=equipTypes.map(t=>
+'<div class="type-card"><div class="type-icon-wrap" style="background:'+t.color+'15;color:'+t.color+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="30" height="30"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/><line x1="10" y1="6" x2="10.01" y2="6"/><line x1="10" y1="18" x2="10.01" y2="18"/><line x1="14" y1="6" x2="14.01" y2="6"/><line x1="14" y1="18" x2="14.01" y2="18"/><line x1="18" y1="6" x2="18.01" y2="6"/><line x1="18" y1="18" x2="18.01" y2="18"/></svg></div><div class="type-value" style="color:'+t.color+'">'+(state['eq_'+t.key]||0)+'</div><div class="type-label">'+t.label+'</div></div>'
 ).join('');
 }
 
