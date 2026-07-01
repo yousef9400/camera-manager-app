@@ -103,7 +103,7 @@ tr:hover td{background:#f8fafc}
 .login-box h1{font-size:24px;font-weight:800;color:var(--primary);margin-bottom:24px}
 .login-box .form-group{text-align:right}
 .login-box .btn{width:100%;margin-top:8px}
-.login-error{color:#dc2626;font-size:13px;margin-top:12px;display:none}
+.login-error{color:#dc2626;font-size:14px;margin-top:12px;display:none;padding:8px 12px;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;font-weight:600}
 .search-box{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:'Tajawal',sans-serif;font-size:14px;margin-bottom:12px}
 </style>
 </head>
@@ -509,19 +509,28 @@ const email=document.getElementById('regEmail').value.trim();
 const pw=document.getElementById('regPass').value.trim();
 const pw2=document.getElementById('regPass2').value.trim();
 const er=document.getElementById('regErr');
+er.style.display='none';
 if(!un||un.length<3){er.style.display='block';er.textContent='اسم المستخدم 3 أحرف على الأقل';return}
 if(!email||!email.includes('@')){er.style.display='block';er.textContent='أدخل بريد صحيح';return}
 if(!pw||pw.length<4){er.style.display='block';er.textContent='كلمة المرور 4 أحرف على الأقل';return}
 if(pw!==pw2){er.style.display='block';er.textContent='كلمتا المرور غير متطابقتين';return}
+er.style.display='block';er.textContent='جاري التسجيل...';er.style.color='var(--primary)';
+try{
 const us=await dbGet('users')||{};
 let exists=false;
-Object.values(us).forEach(u=>{if(u.username===un)exists=true});
-if(exists){er.style.display='block';er.textContent='اسم المستخدم موجود مسبقاً';return}
-await dbPush('users',{username:un,password:pw,email:email,role:'user',permission:'edit'});
+if(us){Object.values(us).forEach(u=>{if(u.username===un)exists=true})}
+if(exists){er.style.display='block';er.textContent='اسم المستخدم موجود مسبقاً';er.style.color='#dc2626';return}
+const result=await dbPush('users',{username:un,password:pw,email:email,role:'user',permission:'edit'});
+if(result===null){er.style.display='block';er.textContent='تعذر الاتصال بالخادم. تحقق من الإنترنت وحاول مرة أخرى';er.style.color='#dc2626';return}
 closeModal('registerModal');
 er.style.display='none';
-alert('تم التسجيل بنجاح! سجّل دخول الحين');
+toast('تم التسجيل بنجاح! سجّل دخول الحين');
 document.getElementById('loginUser').value=un;
+document.getElementById('regUser').value='';
+document.getElementById('regEmail').value='';
+document.getElementById('regPass').value='';
+document.getElementById('regPass2').value='';
+}catch(e){console.error('Register error:',e);er.style.display='block';er.textContent='حدث خطأ غير متوقع. حاول مرة أخرى';er.style.color='#dc2626'}
 }
 
 async function doForgot(){
@@ -529,19 +538,23 @@ const un=document.getElementById('forgotUser').value.trim();
 const email=document.getElementById('forgotEmail').value.trim();
 const newPass=document.getElementById('forgotNewPass').value.trim();
 const er=document.getElementById('forgotErr');
+er.style.display='none';
 if(!un||!email||!newPass){er.style.display='block';er.textContent='أدخل كل البيانات';return}
 if(newPass.length<4){er.style.display='block';er.textContent='كلمة المرور 4 أحرف على الأقل';return}
+er.style.display='block';er.textContent='جاري التحديث...';er.style.color='var(--primary)';
+try{
 const us=await dbGet('users')||{};
 let foundKey=null;
-Object.entries(us).forEach(([k,u])=>{if(u.username===un&&u.email===email)foundKey=k});
-if(!foundKey){er.style.display='block';er.textContent='اسم المستخدم أو البريد غير مسجل في النظام';return}
+if(us){Object.entries(us).forEach(([k,u])=>{if(u.username===un&&u.email===email)foundKey=k})}
+if(!foundKey){er.style.display='block';er.textContent='اسم المستخدم أو البريد غير مسجل في النظام';er.style.color='#dc2626';return}
 const u=us[foundKey];
-if(u.username==='yousef'){er.style.display='block';er.textContent='لا يمكن تغيير كلمة مرور الأدمن الرئيسي';return}
+if(u.username==='yousef'){er.style.display='block';er.textContent='لا يمكن تغيير كلمة مرور الأدمن الرئيسي';er.style.color='#dc2626';return}
 u.password=newPass;
 await dbSet('users/'+foundKey,u);
 closeModal('forgotModal');
 er.style.display='none';
-alert('تم تغيير كلمة المرور بنجاح! سجّل دخول الحين');
+toast('تم تغيير كلمة المرور بنجاح! سجّل دخول الحين');
+}catch(e){console.error('Forgot error:',e);er.style.display='block';er.textContent='حدث خطأ. حاول مرة أخرى';er.style.color='#dc2626'}
 }
 
 async function loadAll(){
